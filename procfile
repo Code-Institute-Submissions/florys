@@ -1,1 +1,1 @@
-web: gunicorn florys-app.wsgi
+web: gunicorn florys.wsgi
