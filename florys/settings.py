@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'cloudinary',
     "crispy_forms",
     "crispy_bootstrap5",
+    'fontawesome'
 ]
 
 MIDDLEWARE = [
@@ -169,6 +170,7 @@ EMAIL_HOST = 'localhost', 'florys-app.herokuapp.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
@@ -186,3 +188,4 @@ LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
