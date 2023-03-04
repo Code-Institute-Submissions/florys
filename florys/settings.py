@@ -164,6 +164,11 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost', 'florys-app.herokuapp.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
