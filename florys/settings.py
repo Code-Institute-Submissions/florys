@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'cloudinary',
     "crispy_forms",
     "crispy_bootstrap5",
-    'fontawesome'
+    'fontawesome',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
 ]
 
 ROOT_URLCONF = 'florys.urls'
@@ -165,11 +166,19 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'localhost', 'florys-app.herokuapp.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# SIGN UP PARAMETERS AND EMAIL AUTH
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_REQUIRED = True
 
+# ACCOUNT_SIGNUP_FORM_CLASS = 'userauth.forms.SignupForm'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+EMAIL_USE_TLS = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -188,4 +197,3 @@ LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
