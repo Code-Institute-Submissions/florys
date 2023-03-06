@@ -78,6 +78,10 @@ menu > li a {
     padding: 1rem 0.5rem;
 }
 
+.card-img-top{
+    border-radius: 1rem;
+}
+
 /*LOGING STYLE FORM*/
 .card {
     width: 90%;
