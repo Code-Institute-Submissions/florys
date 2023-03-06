@@ -57,6 +57,9 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     'fontawesome',
+    'django_summernote',
+    'mjml',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -194,6 +197,15 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+#MJML
+MJML_BACKEND_MODE = 'tcpserver'
+MJML_TCPSERVERS = [
+    ('127.0.0.1', 28101),  # host and port
+]
