@@ -45,6 +45,31 @@ menu > li {
     display: inline-block;
 }
 
+menu > li a {
+    color: floralwhite;
+    position: relative;
+    font-size: 0.7rem;
+    text-decoration: none;
+}
+
+.btn-general-style{
+    width: 120px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.btn-general-style:hover{
+    background: #fff;
+    color: #162938;
+    transition: .5s;
+}
+
 #logo {
     margin:0.7em 0;
 }
