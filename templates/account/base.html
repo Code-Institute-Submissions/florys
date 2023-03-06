@@ -29,6 +29,11 @@
           <menu class="container d-flex justify-content-between">
 
           {% if user.is_authenticated %}
+          <li>
+              <a class="text-light" href="{% url 'blog_home' %}">
+                  View Blog
+              </a>
+          </li>
 
           <li>
               <a class="text-light" href="{% url 'account_email' %}">
@@ -36,7 +41,7 @@
               </a>
           </li>
           <li>
-              <a class="text-light" href="{% url 'home' %}">
+              <a class="text-light" href="{% url 'account_email' %}">
                   Home
               </a>
           </li>
