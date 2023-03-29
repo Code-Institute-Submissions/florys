@@ -16,9 +16,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib.messages import constants as messages
 from django.contrib import staticfiles
 from django.template.context_processors import media
-
 if os.path.isfile("env.py"):
     import env
 
@@ -59,10 +59,10 @@ INSTALLED_APPS = [
     'cloudinary',
     "crispy_forms",
     "crispy_bootstrap5",
-    'fontawesome',
+    'fontawesomefree',
     'django_summernote',
     'mjml',
-    'blog'
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -156,7 +156,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
@@ -168,7 +167,7 @@ SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
 
-    # Neded to login by username in Django admin, regardless of `allauth`
+    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
@@ -178,7 +177,7 @@ AUTHENTICATION_BACKENDS = [
 # SIGN UP PARAMETERS AND EMAIL AUTH
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USERNAME_REQUIRED = True
 
 # ACCOUNT_SIGNUP_FORM_CLASS = 'userauth.forms.SignupForm'
@@ -189,29 +188,48 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_USE_TLS = True
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        },
-        'OAUTH_PKCE_ENABLED': True,
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         },
+#         'OAUTH_PKCE_ENABLED': True,
+#     },
+#     'github': {
+#         'SCOPE': [
+#             'user',
+#             'repo',
+#             'read:org',
+#         ],
+#     },
+# }
 
-LOGIN_REDIRECT_URL = 'home'
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'blog_home'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'blog_home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 
+SOCIALACCOUNT_QUERY_EMAIL = True
+
+ACCOUNT_SESSION_REMEMBER = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-#MJML
+# MJML
 MJML_BACKEND_MODE = 'tcpserver'
 MJML_TCPSERVERS = [
     ('127.0.0.1', 28101),  # host and port
 ]
+
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
