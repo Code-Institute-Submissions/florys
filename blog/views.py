@@ -1,8 +1,16 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.views.generic import CreateView
 from .models import Post
 from .forms import CommentForm
 from django.http import HttpResponseRedirect
+
+
+class AddPostView(CreateView):
+    model = Post
+    template_name = 'post/add_post.html'
+    #fields = ('title', 'content')
+    fields = '__all__'
 
 
 class PostList(generic.ListView):
