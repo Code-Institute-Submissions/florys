@@ -1,0 +1,23 @@
+{% extends "account/base.html" %}
+{%block title %}Edit Blog Post{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <a href="{%url 'blog_home' %}">Go Back</a>
+    <div class="container text-center">
+        <div class="row">
+            <h1>Update Post...</h1>
+            <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button>Update!</button>
+            </form>
+            </div>
+    </div>
+
+{% else %}
+    You are not allowed here! (and you know it...)
+{% endif %}
+
+{%endblock%}
