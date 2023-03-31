@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'mjml',
     'blog',
+    'members',
 ]
 
 MIDDLEWARE = [
@@ -209,6 +210,7 @@ EMAIL_USE_TLS = True
 # }
 
 LOGIN_REDIRECT_URL = 'blog_home'
+LOGOUT_REDIRECT_URL = 'login'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'blog_home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
