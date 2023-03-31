@@ -1,0 +1,22 @@
+{% extends "account/base.html" %}
+{%block title %}Delete Blog Post{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+
+    <div class="container text-center">
+    <h1>Delete: {{ post.title }}</h1>
+    <div class="row">
+        <form method="POST">
+        {% csrf_token %}
+            <strong>Are you sure?!</strong><br>
+        <button>Delete</button>
+        </form>
+        </div>
+</div>
+    {% else %}
+        You are not allowed here...
+    {% endif %}
+    <a href="{%url 'blog_home' %}">Go Back</a>
+
+{%endblock%}
