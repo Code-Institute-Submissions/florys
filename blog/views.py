@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
-from .models import Post
+from .models import Post, Category
 from .forms import CommentForm, EditForm, PostForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -14,10 +14,21 @@ class HomeView(ListView):
     ordering = ['-created_on']
 
 
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(category=cats)
+    return render(request, 'post/categories.html', {'cats': cats.title(), 'category_posts': category_posts})
+
+
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'post/add_post.html'
+
+
+class AddCategoryView(CreateView):
+    model = Category
+    template_name = 'post/add_category.html'
+    fields = '__all__'
 
 
 class UpdatePostView(UpdateView):
