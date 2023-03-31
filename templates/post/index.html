@@ -21,6 +21,7 @@
                             <img class="card-img-top" src=" {{ post.featured_image.url }}">
                             {% endif %}
                             <div class="image-flash">
+                                <a class="card-text" href="{% url 'category' post.category %}">Category: {{ post.category | safe }}</a>
                                 <p class="author">Author: {{ post.author }}</p>
                                 {% if user.is_authenticated %}
                                 <a href="{% url 'update_post' post.pk %}">Edit</a>
