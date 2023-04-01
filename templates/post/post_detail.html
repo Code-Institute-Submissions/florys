@@ -5,12 +5,15 @@
     <div class="masthead">
         <a href="{%url 'blog_home' %}">Go Back</a>
         <br>
+    {% if user.id == post.author.id %}
         <a href="{% url 'update_post' post.pk %}">Edit</a>
         <br>
         <a href="{% url 'delete_post' post.pk %}">Delete</a>
+    {% endif %}
 
         <div class="container">
             <div class="row g-0">
+
                 <p class="card-text">Category: {{ post.category | safe }}</p>
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
@@ -121,5 +124,6 @@
 {% else %}
     Please Log In or Sign Up to see the content...
 {% endif %}
+
 
 {% endblock content %}
