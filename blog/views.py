@@ -11,12 +11,27 @@ from django.urls import reverse_lazy
 class HomeView(ListView):
     model = Post
     template_name = 'post/index.html'
+    cats = Category.objects.all()
     ordering = ['-created_on']
+
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
+
+
+def CategoryListView(request):
+    cat_menu_list = Category.objects.all()
+    return render(request, 'post/category_list.html', {'cat_menu_list': cat_menu_list})
 
 
 def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=cats)
-    return render(request, 'post/categories.html', {'cats': cats.title(), 'category_posts': category_posts})
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    return render(request, 'post/categories.html', {
+        'cats': cats.title().replace('-', ' '),
+        'category_posts': category_posts
+    })
 
 
 class AddPostView(CreateView):
@@ -50,38 +65,47 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
-class PostDetail(DetailView):
+class PostDetailView(DetailView):
     model = Post
     template_name = 'post/post_detail.html'
 
-    def post(self, request, *args, **kwargs):
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        likes = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_likes = likes.number_of_likes()
+        context = super(PostDetailView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        context["total_likes"] = total_likes
+        return context
 
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset)
-        comments = post.comments.filter(approved=True).order_by("created_on")
-        liked = False
-
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
-            comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
-            comment.post = post
-            comment.save()
-        else:
-            comment_form = CommentForm()
-
-        return render(
-            request,
-            "post/post_detail.html",
-            {
-                "post": post,
-                "comments": comments,
-                "commented": True,
-                "comment_form": comment_form,
-                "liked": liked
-            },
-        )
+    # def post(self, request, *args, **kwargs):
+    #
+    #     queryset = Post.objects.filter(status=1)
+    #     post = get_object_or_404(queryset)
+    #     comments = post.comments.filter(approved=True).order_by("created_on")
+    #     liked = False
+    #
+    #     comment_form = CommentForm(data=request.POST)
+    #     if comment_form.is_valid():
+    #         comment_form.instance.email = request.user.email
+    #         comment_form.instance.name = request.user.username
+    #         comment = comment_form.save(commit=False)
+    #         comment.post = post
+    #         comment.save()
+    #     else:
+    #         comment_form = CommentForm()
+    #
+    #     return render(
+    #         request,
+    #         "post/post_detail.html",
+    #         {
+    #             "post": post,
+    #             "comments": comments,
+    #             "commented": True,
+    #             "comment_form": comment_form,
+    #             "liked": liked
+    #         },
+    #     )
 
 
 class PostLike(View):
@@ -93,58 +117,6 @@ class PostLike(View):
         else:
             post.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('post_detail', args=[pk]))
+        return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
 
-# class PostDetail(DetailView):
-#
-#     model = Post
-#     template_name = 'post/post_detail.html'
-#
-#     def get(self, request, *args, **kwargs):
-#         queryset = Post.objects.filter(status=1)
-#         post = get_object_or_404(queryset)
-#         comments = post.comments.filter(approved=True).order_by("-created_on")
-#         liked = False
-#         if post.likes.filter(id=self.request.user.id).exists():
-#             liked = True
-#
-#         return render(
-#             request,
-#             "post/post_detail.html",
-#             {
-#                 "post": post,
-#                 "comments": comments,
-#                 "commented": False,
-#                 "liked": liked,
-#                 "comment_form": CommentForm()
-#             },
-#         )
-#
-#     def post(self, request, *args, **kwargs):
-#
-#         queryset = Post.objects.filter(status=1)
-#         post = get_object_or_404(queryset)
-#         comments = post.comments.filter(approved=True).order_by("created_on")
-#         liked = False
-#
-#         comment_form = CommentForm(data=request.POST)
-#         if comment_form.is_valid():
-#             comment_form.instance.email = request.user.email
-#             comment_form.instance.name = request.user.username
-#             comment = comment_form.save(commit=False)
-#             comment.post = post
-#             comment.save()
-#         else:
-#             comment_form = CommentForm()
-#
-#         return render(
-#             request,
-#             "post/post_detail.html",
-#             {
-#                 "post": post,
-#                 "comments": comments,
-#                 "commented": True,
-#                 "comment_form": comment_form,
-#                 "liked": liked
-#             },
-#         )
+
