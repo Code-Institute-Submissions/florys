@@ -23,6 +23,48 @@ html, body {
     color: var(--fg-color);
 }
 
+#index-img{
+    margin-top:10rem;
+    background-image: url("../images/index_img.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+#welcome-text {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 5rem 6% 2% 1.5rem;
+    color: var(--text-color);
+    text-transform: uppercase;
+}
+
+#welcome-text {
+    padding: 1rem 0.50rem;
+    background-color: rgba(255,255,255, 0.7);
+}
+
+#welcome-text > p {
+    margin:0.50rem 0;
+}
+
+#welcome-text button:hover {
+}
+
+#welcome-text > h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#welcome-text > p {
+    font-size: 1.1rem;
+}
+
 body {
     height: auto;
     padding:10% 0;
@@ -76,7 +118,7 @@ a{
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: white;
+    background-color: black;
 }
 
 menu {
@@ -95,15 +137,17 @@ menu > li a {
 }
 
 .btn-general-style{
-    width: 120px;
-    height: 40px;
+    width: 160px;
+    height: auto;
     background: transparent;
     border: 2px solid #fff;
     outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-align: center;
+    padding: 0.40rem;
+    text-transform: uppercase;
 }
 
 .btn-general-style:hover{
