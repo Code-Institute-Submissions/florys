@@ -8,7 +8,11 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
 
-class HomeView(ListView):
+def InitialView(request):
+    return render(request, 'app/index.html')
+
+
+class HomeBlogView(ListView):
     model = Post
     template_name = 'post/index.html'
     cats = Category.objects.all()
@@ -16,7 +20,7 @@ class HomeView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
-        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context = super(HomeBlogView, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
         return context
 
@@ -118,5 +122,3 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
-
-
