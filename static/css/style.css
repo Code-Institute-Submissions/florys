@@ -7,18 +7,24 @@
 /* ------------------------ */
 /* GENERAL STYLES */
 /* ------------------------ */
+:root {
+    --bg-color: #3C6255;
+    --fg-color: #61876E;
+    --light-green: #A6BB8D;
+    --mild-green: #EAE7B1;
+    --text-color: #285430;
+    --text-hover: #379237;
+    --card-color: #40513B;
+}
+
 html, body {
-    font-size: 15pt;
-    color: floralwhite;
+    font-size: 18pt;
+    background: var(--bg-color);
+    color: var(--fg-color);
 }
 
 body {
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
+    height: auto;
     padding:10% 0;
 }
 
@@ -48,6 +54,7 @@ a{
     min-height: 70px;
     justify-content: space-between;
     align-items: center;
+    z-index: auto;
 }
 
 .nav-menu{
@@ -58,7 +65,7 @@ a{
 }
 
 .hamburger {
-    display: none;
+    display: block;
     cursor: pointer;
 }
 
@@ -81,7 +88,7 @@ menu > li {
 }
 
 menu > li a {
-    color: floralwhite;
+    color: var(--text-color);
     position: relative;
     font-size: 0.7rem;
     text-decoration: none;
@@ -101,7 +108,7 @@ menu > li a {
 
 .btn-general-style:hover{
     background: #fff;
-    color: #162938;
+    color: var(--text-hover);
     transition: .5s;
 }
 
@@ -123,12 +130,10 @@ menu > li a {
 .card {
     width: 90%;
     max-width: 400px;
-    padding: 1.5rem;
+    padding: 1.2rem;
     border-radius: 1rem;
-    border: 1px solid rgba(225, 225, 225, 0.5);
-    backdrop-filter: blur(0.10rem);
-    box-shadow: 0 0 55px rgba(0,0,0,0.6);
-    background-color: rgba(225, 225, 225, 0.001);
+    border: 1px solid var(--text-color);
+    background-color: var(--text-color);
 }
 
 .comment-area {
@@ -137,7 +142,7 @@ menu > li a {
     border: 1px solid rgba(225, 225, 225, 0.5);
     backdrop-filter: blur(0.10rem);
     box-shadow: 0 0 55px rgba(0,0,0,0.6);
-    background-color: rgba(225, 225, 225, 0.001);
+    background-color: var(--bg-color);
 }
 
  .row:first-child{
@@ -174,11 +179,11 @@ footer {
     font-size: 1.5rem;
     margin: 1rem;
     padding: 2rem;
-    color: #010533;
+    color: var(--text-color);
 }
 
 footer p {
-    color:gray;
+    color:var(--text-color);
     font-size: 0.9rem;
 }
 
@@ -192,10 +197,7 @@ footer p {
 
 /* Responsive NavMenu*/
 
-@media(max-width: 768px){
-    .hamburger{
-        display: block;
-    }
+@media(min-width: 320px){
 
     .hamburger.active .bar:nth-child(2){
         opacity: 0;
@@ -218,7 +220,7 @@ footer p {
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        background:black;
+        background: var(--light-green);
     }
 
     .nav-item{
