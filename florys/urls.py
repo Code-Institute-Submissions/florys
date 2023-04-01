@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from blog.views import HomeView
+from blog.views import HomeBlogView
 
 urlpatterns = [
-    path('', HomeView.as_view(template_name="post/index.html"), name='blog_home'),
+    path('/home', HomeBlogView.as_view(template_name="post/index.html"), name='blog_home'),
     path('admin/', admin.site.urls),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
