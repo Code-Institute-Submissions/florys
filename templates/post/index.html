@@ -1,10 +1,10 @@
 {% extends "account/base.html" %}
 
 {% block content %}
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
 
-    <div class="container-fluid">
-    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
 
 
                 <!-- Blog Entries Column -->
@@ -67,3 +67,9 @@
         </div>
     {% endif %}
 {% endblock %}
+
+
+
+
+
+
