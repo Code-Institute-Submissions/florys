@@ -19,7 +19,7 @@
 
 html, body {
     font-size: 18pt;
-    background: var(--bg-color);
+    background:whitesmoke;
     color: var(--fg-color);
 }
 
@@ -171,14 +171,14 @@ menu > li a {
 }
 
 /*LOGING STYLE FORM*/
-.card {
-    width: 90%;
-    max-width: 400px;
-    padding: 1.2rem;
-    border-radius: 1rem;
-    border: 1px solid var(--text-color);
-    background-color: var(--text-color);
-}
+/*.card {*/
+/*    width: 90%;*/
+/*    max-width: 400px;*/
+/*    padding: 1.2rem;*/
+/*    border-radius: 1rem;*/
+/*    border: 1px solid var(--text-color);*/
+/*    background-color: var(--text-color);*/
+/*}*/
 
 .comment-area {
     padding: 1.5rem;
