@@ -19,7 +19,7 @@ from django.views.generic import TemplateView
 from blog.views import HomeBlogView
 
 urlpatterns = [
-    path('/home', HomeBlogView.as_view(template_name="post/index.html"), name='blog_home'),
+    path('home', HomeBlogView.as_view(template_name="post/index.html"), name='blog_home'),
     path('admin/', admin.site.urls),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
