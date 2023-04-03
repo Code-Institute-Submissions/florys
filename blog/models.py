@@ -24,6 +24,8 @@ class Profile(models.Model):
         }
         return [(p, u) for p, u in platforms.items() if u]
 
+    def get_absolute_url(self):
+        return reverse('blog_home')
 
     def __str__(self):
         return str(self.user)
@@ -66,15 +68,13 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
-    email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['created_on']
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return f"Comment {self.name} by {self.body}"
