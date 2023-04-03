@@ -105,20 +105,41 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{% url 'edit_profile' %}">
-                            Edit Profile
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false"
+                           href="{% url 'show_profile_page' user.profile.id %}">
+                            {{ user.username }}
                         </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <button class="btn-general-style">
-                            <a href="{% url 'account_logout' %}">
-                                Sign Out
-                            </a>
-                        </button>
-                    </li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a>
+                            </li>
+                            {% if user.profile.id %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit
+                                        Profile page</a>
+                                </li>
 
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show
+                                        Profile page</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'account_logout' %}">
+                                        Sign Out
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile
+                                        Page</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
                 {% else %}
 
 
@@ -212,11 +233,11 @@
         }
     )
 
-    document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    {% comment %}document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
 
-    }))
+    })){% endcomment %}
 </script>
 </html>
 
