@@ -1,4 +1,4 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,600;1,300&display=swap');*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -8,11 +8,11 @@
 /* GENERAL STYLES */
 /* ------------------------ */
 :root {
-    --bg-color: #3C6255;
+    --bg-color: #f5f5f5 ;
     --fg-color: #61876E;
     --light-green: #A6BB8D;
     --mild-green: #EAE7B1;
-    --text-color: #285430;
+    --text-color: #9ca2a7;
     --text-hover: #379237;
     --card-color: #40513B;
 }
@@ -21,6 +21,11 @@ html, body {
     font-size: 18pt;
     background:whitesmoke;
     color: var(--fg-color);
+    font-family: 'Roboto Mono', 'monospace', 'sans-serif';
+}
+
+header {
+    z-index: 1;
 }
 
 #index-img{
@@ -50,6 +55,7 @@ html, body {
 }
 
 #welcome-text > p {
+    color: var(--fg-color);
     margin:0.50rem 0;
 }
 
@@ -63,6 +69,11 @@ html, body {
 
 #welcome-text > p {
     font-size: 1.1rem;
+}
+
+.created-on-text{
+    font-weight: 600;
+    letter-spacing: -0.1rem;
 }
 
 body {
@@ -96,7 +107,7 @@ a{
     min-height: 70px;
     justify-content: space-between;
     align-items: center;
-    z-index: auto;
+    z-index: initial;
 }
 
 .nav-menu{
@@ -168,17 +179,20 @@ menu > li a {
 
 .card-img-top{
     border-radius: 1rem;
+    width: 400px;
+    height: auto;
 }
 
-/*LOGING STYLE FORM*/
-/*.card {*/
-/*    width: 90%;*/
-/*    max-width: 400px;*/
-/*    padding: 1.2rem;*/
-/*    border-radius: 1rem;*/
-/*    border: 1px solid var(--text-color);*/
-/*    background-color: var(--text-color);*/
-/*}*/
+.card {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.80rem;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 55px rgba(0,0,0,0.1);
+
+}
 
 .comment-area {
     padding: 1.5rem;
