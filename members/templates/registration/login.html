@@ -16,14 +16,14 @@
             <div class="col-md-6 flex-item">
                 <div class="card text-center">
                     <div class="card-body">
-                        <form class="login" method="POST" >
+                        <form class="login" method="POST">
                           {% csrf_token %}
                           {{ form|crispy }}
                           {% if redirect_field_value %}
                           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                           {% endif %}
                           <div class="d-grid">
-                                <button class="primaryAction btn btn-outline-light" type="submit">
+                                <button class="btn btn-primary" type="submit">
                                     {% trans "Sign In" %}
                                 </button>
                                 <a class="button secondaryAction text-dark text-center" href="{% url 'account_reset_password' %}">
