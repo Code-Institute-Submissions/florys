@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
-from .models import Post, Category
+from .models import Post, Category, Comment
 from .forms import CommentForm, EditForm, PostForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -15,8 +15,12 @@ class InitialView(TemplateView):
 class HomeBlogView(ListView):
     model = Post
     template_name = 'post/index.html'
-    cats = Category.objects.all()
-    ordering = ['-created_on']
+
+    def get_queryset(self):
+        cats = Category.objects.all()
+        ordering = ['-created_on']
+        queryset = Post.objects.order_by(*ordering)
+        return queryset
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
@@ -31,7 +35,7 @@ def CategoryListView(request):
 
 
 def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    category_posts = Post.objects.filter(category__slug=cats)
     return render(request, 'post/categories.html', {
         'cats': cats.title().replace('-', ' '),
         'category_posts': category_posts
@@ -75,7 +79,7 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
-        likes = get_object_or_404(Post, id=self.kwargs['pk'])
+        likes = self.object
         total_likes = likes.number_of_likes()
         context = super(PostDetailView, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
@@ -93,3 +97,15 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+
+
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'post/add_comment.html'
+    success_url = reverse_lazy('blog_home')
+
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
