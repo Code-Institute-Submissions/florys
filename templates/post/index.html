@@ -6,40 +6,39 @@
         <div class="container-fluid">
             <div class="row">
 
-
                 <!-- Blog Entries Column -->
                 <div class="col-md-9 mt-3">
                     <div class="row">
                         {% for post in object_list %}
-                            <div class="mb-4">
+                            <div class="card mb-4">
                                 <div class="card-body">
                                     <div class="image-container">
                                         {% if "placeholder" in post.featured_image.url %}
                                             <img class="card-img-top"
                                                  src="https://picsum.photos/id/18/200/150">
                                         {% else %}
-                                            <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                            <img class="card-img-top" src="{{ post.featured_image.url }}">
                                         {% endif %}
                                         <div class="image-flash">
                                             <a class="card-text"
                                                href="{% url 'category' post.category %}">Category: {{ post.category | safe | slugify }}</a>
-                                            <p class="author">Author: {{ post.author }}</p>
-                                            {% if user.is_authenticated %}
-                                                {% if user.id == post.author.id %}
-                                                    <a href="{% url 'update_post' post.pk %}">Edit</a>
-                                                    <a href="{% url 'delete_post' post.pk %}">Delete</a>
-                                                {% endif %}
-                                            {% endif %}
+                                            <p class="author fw-normal">Author: {{ post.author }}</p>
                                         </div>
                                     </div>
                                     <a href="{% url 'post_detail' post.pk %}" class="post-link">
-                                        <h2 class="card-title">{{ post.title | slice:"55" | safe }}</h2>
-                                        <p class="card-text">{{ post.excerpt | slice:"100" | safe }}</p>
+                                        <h2 class="card-title fw-bold">{{ post.title | slice:"55" | safe }}</h2>
+                                        <p class="card-text fw-normal">{{ post.excerpt | slice:"100" | safe }}</p>
                                     </a>
                                     <hr/>
-                                    <p class="card-text text-muted h6">{{ post.created_on }} <i
+                                    <p class="text-muted font created-on-text mt-4 mb-4">{{ post.created_on }} <i
                                             class="far fa-heart"></i>
                                         {{ post.number_of_likes }}</p>
+                                    {% if user.is_authenticated %}
+                                        {% if user.id == post.author.id %}
+                                            <a class="fw-lighter" href="{% url 'update_post' post.pk %}">Edit</a>
+                                            <a class="fw-lighter" href="{% url 'delete_post' post.pk %}">Delete</a>
+                                        {% endif %}
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
