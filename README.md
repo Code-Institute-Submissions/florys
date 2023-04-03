@@ -13,7 +13,7 @@ on the Blog and upload or update their user image and details.
 
 README Table Content
 
-- [Florys Blog - Introduction](#Florys Blog---introduction)
+- [Florys Blog - Introduction](#florys-blog)
   - [User Experience - UX](#user-experience---ux)
     - [User Stories](#user-stories)
     - [The Scope](#the-scope)
