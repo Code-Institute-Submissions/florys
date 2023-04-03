@@ -5,15 +5,15 @@
 {% block content %}
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
-    <a href="{%url 'blog_home' %}">Go Back</a>
     <div class="container text-center">
+        <p><a href="{%url 'blog_home' %}">Go Back</a></p>
         <div class="row">
             <h1>Update Post...</h1>
             <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
 
-            <button>Update!</button>
+            <button class="btn-general-style mb-4">Update!</button>
             </form>
             </div>
     </div>
@@ -24,6 +24,4 @@
 {% else %}
     You are not allowed here! (and you know it...)
 {% endif %}
-        <a href="{%url 'blog_home' %}">Go Back</a>
-
 {%endblock%}
