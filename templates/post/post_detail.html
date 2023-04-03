@@ -1,4 +1,5 @@
 {% extends 'account/base.html' %}
+{% load crispy_forms_filters %}
 {% load static %} {% block content %}
     {% load crispy_forms_tags %}
 
@@ -25,21 +26,22 @@
                                 <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
 
                                 <p class="small text-muted">
+                                    <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile Page</a> |
                                     {% for platform, url in post.author.profile.get_social_media_urls %}
                                         <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |{% endif %}
                                     {% endfor %}
                                 </p>
-                            {% if post.author.profile.profile_pic.url%}
-                                <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle"
-                                     width="150" height="200"
-                                     alt="">
-                            {% else %}
-                                <img src="{% static 'images/default_profile_pic.png' %}" class=""
-                                     alt="">
-                            {% endif %}
-                            {% if show_profile_page %}
-                                <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile Page</a>
-                            {% endif %}
+                                {% if post.author.profile.profile_pic.url %}
+                                    <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle"
+                                         width="150" height="200"
+                                         alt="">
+                                {% else %}
+                                    <img src="{% static 'images/default_profile_pic.png' %}" class=""
+                                         alt="">
+                                {% endif %}
+                                {% if show_profile_page %}
+                                    <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile Page</a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="card-body">
@@ -103,43 +105,27 @@
                 <div class="mb-4 mt-3 rounded">
                     <h3>Comments:</h3>
                     <div class="card-body">
-                        {% for comment in comments %}
-                            <div class="comments" style="padding: 10px;">
+                        {% if not post.comments.all %}
+                            <p>No Comments yet...</p>
+                            <a href="{% url 'add_comment' post.pk %}">Add One Now</a>
+                        {% else %}
+                            {% for comment in post.comments.all %}
+                                <div class="comments" style="padding: 10px;">
+                                <p>Posted from: {{ user.username }}</p>
                                 <p class="font-weight-bold">
-                                    {{ comment.name }}
+                                    <strong>{{ comment.name }}</strong>
                                     <span class=" text-muted font-weight-normal">
-                                {{ comment.created_on }}
-                            </span> wrote:
-                                </p>
-                                {{ comment.body | linebreaks }}
-                            </div>
-                            <!-- Our for loop ends here -->
-                        {% endfor %}
+                                        <strong>{{ comment.created_on }}</strong></span>
+                                    wrote:
+                                    </p>
+                                    {{ comment.body | linebreaks }}
+                                </div>
+                                <!-- Our for loop ends here -->
+                            {% endfor %}
+                            <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+                        {% endif %}
                     </div>
                 </div>
-                <div class="card-body mt-3">
-                    <!-- For later -->
-                    {% if commented %}
-                        <div class="alert alert-success" role="alert">
-                            Your comment is awaiting approval
-                        </div>
-                    {% else %}
-                        {% if user.is_authenticated %}
-
-                            <h3>Leave a comment:</h3>
-                            <p>Posting as: {{ user.username }}</p>
-                            <form method="POST" style="margin-top: 1.3em; width:500px; display: inline-block">
-
-                                {% csrf_token %}
-                                {{ comment_form | crispy }}
-                                <button type="submit" class="btn-general-style">
-                                    Submit
-                                </button>
-                            </form>
-                        {% endif %}
-                    {% endif %}
-                </div>
-            </div>
         </div>
     {% else %}
         Please Log In or Sign Up to see the content...
