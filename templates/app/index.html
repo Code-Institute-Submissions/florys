@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
     {% block extra_head %}
     {% endblock %}
   </head>
-  <body class="text-center mt-2">
+  <body class="text-center mt-2 background-home">
     {% block body %}
 
     {% if messages %}
@@ -161,12 +161,12 @@
 
     {% block content %}
          <!--Intro section-->
-        <section id="index-img">
+        <section>
             <div id="welcome-text">
                 <h2>Florys Souls</h2>
                 <p>Discover, Write, Enjoy...</p>
                 <button class="btn-general-style">
-                    <a href="#">Join For Free!</a>
+                    <a href="{% url 'login'  %}">Join For Free!</a>
                 </button>
             </div>
         </section>
