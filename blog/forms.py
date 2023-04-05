@@ -1,6 +1,6 @@
 from .models import Comment, Post, Category
 from django import forms
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django_summernote.widgets import SummernoteWidget
 
 choices = Category.objects.all().values_list('name', 'name')
 
@@ -21,14 +21,13 @@ class PostForm(forms.ModelForm):
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'body': SummernoteWidget(),
             'snippet': forms.Textarea(attrs={'class': 'form-control'}),
-
         }
 
 
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'body', 'snippet')
+        fields = ('title', 'featured_image', 'body', 'snippet')
 
         widgets = {
             'body': SummernoteWidget(),
@@ -37,7 +36,6 @@ class EditForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-
     class Meta:
         model = Comment
         fields = ('name', 'body')
