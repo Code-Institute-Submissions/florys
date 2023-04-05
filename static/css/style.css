@@ -10,9 +10,9 @@
 :root {
     --bg-color: #f5f5f5 ;
     --fg-color: #61876E;
-    --light-green: #A6BB8D;
+    --light-green: #4f8627;
     --mild-green: #EAE7B1;
-    --text-color: #9ca2a7;
+    --text-color: #9ca2b6;
     --text-hover: #379237;
     --card-color: #40513B;
 }
@@ -26,16 +26,6 @@ html, body {
 
 header {
     z-index: 1;
-}
-
-#index-img{
-    margin-top:10rem;
-    background-image: url("../images/index_img.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
 }
 
 #welcome-text {
@@ -78,7 +68,7 @@ header {
 
 body {
     height: auto;
-    padding:10% 0;
+    padding-top: 10%;
 }
 
 /*Heading and logo*/
@@ -158,13 +148,12 @@ menu > li a {
     font-size: 0.8rem;
     text-align: center;
     padding: 0.40rem;
-    text-transform: uppercase;
 }
 
 .btn-general-style:hover{
-    background: #fff;
-    color: var(--text-hover);
+    background: var(--fg-color);
     transition: .5s;
+    font-weight: bold;
 }
 
 #logo {
@@ -179,19 +168,35 @@ menu > li a {
 
 .card-img-top{
     border-radius: 1rem;
-    width: 400px;
-    height: auto;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
 }
 
-.card {
+.background-home{
+    background-image: url("../images/background_home.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
+.background-wings{
+    background-image: url("../images/second_green_wave.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 70vh;
+}
+
+.general-card-style {
     width: 100%;
     max-width: 500px;
     padding: 0.80rem;
     border-radius: 1rem;
     border: 1px solid transparent;
     background-color: var(--bg-color);
-    box-shadow: 0 0 55px rgba(0,0,0,0.1);
-
+    box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, .1);
 }
 
 .comment-area {
