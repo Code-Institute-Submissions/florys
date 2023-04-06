@@ -8,7 +8,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    bio = models.TextField()
+    bio = models.TextField(blank=True)
     profile_pic = CloudinaryField('image', blank=True)
     website_url = models.CharField(max_length=200, null=True, blank=True)
     facebook_url = models.CharField(max_length=200, null=True, blank=True)
