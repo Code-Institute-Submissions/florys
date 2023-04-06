@@ -9,12 +9,12 @@
 /* ------------------------ */
 :root {
     --bg-color: #f5f5f5 ;
-    --fg-color: #61876E;
-    --light-green: #4f8627;
+    --fg-color: #203749;
+    --light-grey: #87889e;
     --mild-green: #EAE7B1;
     --text-color: #9ca2b6;
-    --text-hover: #379237;
-    --card-color: #40513B;
+    --text-hover: #203980;
+    --card-color: #b8a6ad;
 }
 
 html, body {
@@ -68,7 +68,6 @@ header {
 
 body {
     height: auto;
-    padding-top: 10%;
 }
 
 /*Heading and logo*/
@@ -83,8 +82,6 @@ header {
     left:0;
     right:0;
     top:0;
-   /* backdrop-filter: blur(0.20rem);
-    box-shadow: 0 0 50px rgba(0,0,0.7,0);*/
 }
 
 a{
@@ -98,6 +95,7 @@ a{
     justify-content: space-between;
     align-items: center;
     z-index: initial;
+
 }
 
 .nav-menu{
@@ -105,6 +103,7 @@ a{
     justify-content: space-between;
     align-items: center;
     gap: 60px;
+    margin-top: 10%;
 }
 
 .hamburger {
@@ -119,7 +118,7 @@ a{
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: black;
+    background-color: gray;
 }
 
 menu {
@@ -137,8 +136,8 @@ menu > li a {
     text-decoration: none;
 }
 
+
 .btn-general-style{
-    width: 160px;
     height: auto;
     background: transparent;
     border: 2px solid #fff;
@@ -168,9 +167,16 @@ menu > li a {
 
 .card-img-top{
     border-radius: 1rem;
-    width: 100%;
+    width: 50%;
     aspect-ratio: 1;
     object-fit: cover;
+}
+
+.profile-image{
+    border-radius: 1rem;
+    object-fit: cover;
+    aspect-ratio: 1;
+    width: 10%;
 }
 
 .background-home{
@@ -178,16 +184,17 @@ menu > li a {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh;
+    height: 80vh;
 }
 
-.background-wings{
-    background-image: url("../images/second_green_wave.png");
+.background-login{
+    background-image: url("../images/login_background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 70vh;
+    height: 100vh;
 }
+
 
 .general-card-style {
     width: 100%;
@@ -283,7 +290,7 @@ footer p {
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        background: var(--light-green);
+        background: var(--light-grey);
     }
 
     .nav-item{
