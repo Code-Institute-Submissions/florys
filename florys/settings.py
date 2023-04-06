@@ -58,8 +58,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.github',
     'cloudinary_storage',
     'cloudinary',
     'crispy_forms',
@@ -191,25 +189,6 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_USE_TLS = True
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         'SCOPE': [
-#             'profile',
-#             'email',
-#         ],
-#         'AUTH_PARAMS': {
-#             'access_type': 'online',
-#         },
-#         'OAUTH_PKCE_ENABLED': True,
-#     },
-#     'github': {
-#         'SCOPE': [
-#             'user',
-#             'repo',
-#             'read:org',
-#         ],
-#     },
-# }
 
 LOGIN_REDIRECT_URL = 'blog_home'
 LOGOUT_REDIRECT_URL = 'login'
@@ -222,13 +201,6 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_SESSION_REMEMBER = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
-# # MJML
-# MJML_BACKEND_MODE = 'tcpserver'
-# MJML_TCPSERVERS = [
-#     ('127.0.0.1', 28101),  # host and port
-# ]
-
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
