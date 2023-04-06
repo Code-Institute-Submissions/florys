@@ -34,7 +34,6 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ON_HEROKU', '0') == '0':
     DEBUG = True
 else:
@@ -61,11 +60,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'cloudinary_storage',
     'cloudinary',
-    "crispy_forms",
-    "crispy_bootstrap5",
+    'crispy_forms',
+    'crispy_bootstrap5',
     'fontawesomefree',
     'django_summernote',
-    'mjml',
     'blog',
     'members',
 ]
@@ -223,11 +221,11 @@ ACCOUNT_SESSION_REMEMBER = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-# MJML
-MJML_BACKEND_MODE = 'tcpserver'
-MJML_TCPSERVERS = [
-    ('127.0.0.1', 28101),  # host and port
-]
+# # MJML
+# MJML_BACKEND_MODE = 'tcpserver'
+# MJML_TCPSERVERS = [
+#     ('127.0.0.1', 28101),  # host and port
+# ]
 
 
 MESSAGE_TAGS = {
