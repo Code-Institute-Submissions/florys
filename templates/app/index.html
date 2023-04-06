@@ -4,7 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block head_title %}{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_head %}
@@ -26,51 +29,57 @@
         <div id="logo">
             <a href="#">
                 Florys
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" version="1.1" viewBox="0 0 700 700">
-                <g>
-                <path d="m143.86 425.52c-46.473-19.676-75.711-53.27-64.699-102.06 2.9688-9.9805 19.539 0.18359 44 15.703 18.027 30.543 47.66 56.336 90.508 78.676-14.656 9.3281-35.48 8.0078-69.809 7.6836zm169.35-271.2c14.676-59.449 42.234-96.746 59.141-96.746 28.742 0 22.629 36.758 15.812 84.082-8.4297-4.3008-17.945-6.5781-28.68-6.5781-19.41 0-34.582 6.8633-46.273 19.242zm130.09 102.61c49.75-116.12 135.61-137.46 169.23-112.51l-4.7539 5.5117c-6.3945 7.4062-12.93 14.598-19.594 21.574-38.176 39.961-79.051 71.469-119.84 95.414-7.6602 4.4961-21.996 12.148-21.996 12.148s-1.2383-10.102-3.0391-22.141zm-67.754 231.66c-25.84-9.2148-51.711-27.547-51.711-27.547s-153.66 49.484-190.89-11.574c78.906 0 99.605-11.711 157.93-24.957-157.93-55.027-181.46-128.14-157.93-232.4 58.727-12.508 124.27 13.246 169.98 123.64 1.0234-12.344-8.7031-156.67 56.559-156.67 64.168 0 64.168 156.67 64.168 156.67s105.08-37.523 202.29-150.14c-39.617 135.3-152.13 187.16-152.13 187.16s63.168-21.043 76.637-21.043c0 43.551-117.96 99.5-117.96 99.5s-4.2773 7.5977 0.51172 22.605c4.7852 15.008 11.332 39.793-9.3438 45.391-14.16 3.8359-34.695-5.8555-48.102-10.633z" fill-rule="evenodd"/>
-                <use x="70" y="680" xlink:href="#v"/>
-                <use x="99.355469" y="680" xlink:href="#c"/>
-                <use x="119.082031" y="680" xlink:href="#a"/>
-                <use x="146.210938" y="680" xlink:href="#h"/>
-                <use x="173.203125" y="680" xlink:href="#b"/>
-                <use x="192.324219" y="680" xlink:href="#a"/>
-                <use x="219.453125" y="680" xlink:href="#m"/>
-                <use x="262.011719" y="680" xlink:href="#l"/>
-                <use x="290.644531" y="680" xlink:href="#k"/>
-                <use x="330.644531" y="680" xlink:href="#g"/>
-                <use x="359.960938" y="680" xlink:href="#f"/>
-                <use x="388.4375" y="680" xlink:href="#h"/>
-                <use x="415.429688" y="680" xlink:href="#j"/>
-                <use x="471.035156" y="680" xlink:href="#u"/>
-                <use x="498.320312" y="680" xlink:href="#f"/>
-                <use x="526.796875" y="680" xlink:href="#e"/>
-                <use x="554.433594" y="680" xlink:href="#t"/>
-                <use x="587.636719" y="680" xlink:href="#e"/>
-                <use x="601.347656" y="680" xlink:href="#a"/>
-                <use x="628.476562" y="680" xlink:href="#i"/>
-                <use x="670.878906" y="680" xlink:href="#s"/>
-                <use x="696.367188" y="680" xlink:href="#e"/>
-                <use x="70" y="720" xlink:href="#r"/>
-                <use x="87.402344" y="720" xlink:href="#c"/>
-                <use x="107.128906" y="720" xlink:href="#d"/>
-                <use x="134.609375" y="720" xlink:href="#j"/>
-                <use x="190.214844" y="720" xlink:href="#b"/>
-                <use x="209.335938" y="720" xlink:href="#f"/>
-                <use x="237.8125" y="720" xlink:href="#a"/>
-                <use x="278.867188" y="720" xlink:href="#q"/>
-                <use x="312.34375" y="720" xlink:href="#d"/>
-                <use x="339.824219" y="720" xlink:href="#i"/>
-                <use x="368.300781" y="720" xlink:href="#p"/>
-                <use x="410.703125" y="720" xlink:href="#g"/>
-                <use x="440.019531" y="720" xlink:href="#c"/>
-                <use x="459.746094" y="720" xlink:href="#d"/>
-                <use x="487.226562" y="720" xlink:href="#o"/>
-                <use x="500.9375" y="720" xlink:href="#a"/>
-                <use x="528.066406" y="720" xlink:href="#n"/>
-                <use x="551.777344" y="720" xlink:href="#b"/>
-                </g>
-            </svg>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink"
+                     width="50px"
+                     height="50px"
+                     version="1.1"
+                     viewBox="0 0 700 700">
+                    <g>
+                        <path d="m143.86 425.52c-46.473-19.676-75.711-53.27-64.699-102.06 2.9688-9.9805 19.539 0.18359 44 15.703 18.027 30.543 47.66 56.336 90.508 78.676-14.656 9.3281-35.48 8.0078-69.809 7.6836zm169.35-271.2c14.676-59.449 42.234-96.746 59.141-96.746 28.742 0 22.629 36.758 15.812 84.082-8.4297-4.3008-17.945-6.5781-28.68-6.5781-19.41 0-34.582 6.8633-46.273 19.242zm130.09 102.61c49.75-116.12 135.61-137.46 169.23-112.51l-4.7539 5.5117c-6.3945 7.4062-12.93 14.598-19.594 21.574-38.176 39.961-79.051 71.469-119.84 95.414-7.6602 4.4961-21.996 12.148-21.996 12.148s-1.2383-10.102-3.0391-22.141zm-67.754 231.66c-25.84-9.2148-51.711-27.547-51.711-27.547s-153.66 49.484-190.89-11.574c78.906 0 99.605-11.711 157.93-24.957-157.93-55.027-181.46-128.14-157.93-232.4 58.727-12.508 124.27 13.246 169.98 123.64 1.0234-12.344-8.7031-156.67 56.559-156.67 64.168 0 64.168 156.67 64.168 156.67s105.08-37.523 202.29-150.14c-39.617 135.3-152.13 187.16-152.13 187.16s63.168-21.043 76.637-21.043c0 43.551-117.96 99.5-117.96 99.5s-4.2773 7.5977 0.51172 22.605c4.7852 15.008 11.332 39.793-9.3438 45.391-14.16 3.8359-34.695-5.8555-48.102-10.633z"
+                              fill-rule="evenodd"/>
+                        <use x="70" y="680" xlink:href="#v"/>
+                        <use x="99.355469" y="680" xlink:href="#c"/>
+                        <use x="119.082031" y="680" xlink:href="#a"/>
+                        <use x="146.210938" y="680" xlink:href="#h"/>
+                        <use x="173.203125" y="680" xlink:href="#b"/>
+                        <use x="192.324219" y="680" xlink:href="#a"/>
+                        <use x="219.453125" y="680" xlink:href="#m"/>
+                        <use x="262.011719" y="680" xlink:href="#l"/>
+                        <use x="290.644531" y="680" xlink:href="#k"/>
+                        <use x="330.644531" y="680" xlink:href="#g"/>
+                        <use x="359.960938" y="680" xlink:href="#f"/>
+                        <use x="388.4375" y="680" xlink:href="#h"/>
+                        <use x="415.429688" y="680" xlink:href="#j"/>
+                        <use x="471.035156" y="680" xlink:href="#u"/>
+                        <use x="498.320312" y="680" xlink:href="#f"/>
+                        <use x="526.796875" y="680" xlink:href="#e"/>
+                        <use x="554.433594" y="680" xlink:href="#t"/>
+                        <use x="587.636719" y="680" xlink:href="#e"/>
+                        <use x="601.347656" y="680" xlink:href="#a"/>
+                        <use x="628.476562" y="680" xlink:href="#i"/>
+                        <use x="670.878906" y="680" xlink:href="#s"/>
+                        <use x="696.367188" y="680" xlink:href="#e"/>
+                        <use x="70" y="720" xlink:href="#r"/>
+                        <use x="87.402344" y="720" xlink:href="#c"/>
+                        <use x="107.128906" y="720" xlink:href="#d"/>
+                        <use x="134.609375" y="720" xlink:href="#j"/>
+                        <use x="190.214844" y="720" xlink:href="#b"/>
+                        <use x="209.335938" y="720" xlink:href="#f"/>
+                        <use x="237.8125" y="720" xlink:href="#a"/>
+                        <use x="278.867188" y="720" xlink:href="#q"/>
+                        <use x="312.34375" y="720" xlink:href="#d"/>
+                        <use x="339.824219" y="720" xlink:href="#i"/>
+                        <use x="368.300781" y="720" xlink:href="#p"/>
+                        <use x="410.703125" y="720" xlink:href="#g"/>
+                        <use x="440.019531" y="720" xlink:href="#c"/>
+                        <use x="459.746094" y="720" xlink:href="#d"/>
+                        <use x="487.226562" y="720" xlink:href="#o"/>
+                        <use x="500.9375" y="720" xlink:href="#a"/>
+                        <use x="528.066406" y="720" xlink:href="#n"/>
+                        <use x="551.777344" y="720" xlink:href="#b"/>
+                    </g>
+                </svg>
             </a>
         </div>
 
