@@ -2,9 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.views import PasswordChangeView
-from django.views.generic import DetailView, CreateView
+from django.views.generic import DetailView, CreateView, TemplateView
 from .forms import SignUpForm, EditProfileForm, ChangePasswordForm, ProfilePageForm
 from blog.models import Profile
+from django.contrib import messages
 
 
 # Create your views here.
@@ -12,6 +13,10 @@ class UserRegisterView(generic.CreateView):
     form_class = SignUpForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Account created successfully, now please log in!.')
+        return super().form_valid(form)
 
 
 class UserEditView(generic.UpdateView):
@@ -33,11 +38,9 @@ def password_success(request):
 
 
 class CreateProfilePageView(CreateView):
-
     model = Profile
     form_class = ProfilePageForm
     template_name = 'registration/create_user_profile_page.html'
-
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -62,3 +65,7 @@ class EditProfilePageView(generic.UpdateView):
     fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'twitter_url', 'instagram_url']
 
     success_url = reverse_lazy('blog_home')
+
+
+class AccountLogout(TemplateView):
+    template_name = 'registration/logout.html'
