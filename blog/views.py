@@ -8,10 +8,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
 
-class InitialView(TemplateView):
-    template_name = "app/index.html"
-
-
 class HomeBlogView(ListView):
     model = Post
     template_name = 'post/index.html'
