@@ -1,7 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
-from django_summernote.widgets import SummernoteWidget
 
 from blog.models import Profile
 
@@ -13,7 +12,6 @@ class ProfilePageForm(forms.ModelForm):
         widgets = {
 
             'bio': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
             'website_url': forms.TextInput(attrs={'class': 'form-control'}),
             'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
             'twitter_url': forms.TextInput(attrs={'class': 'form-control'}),
