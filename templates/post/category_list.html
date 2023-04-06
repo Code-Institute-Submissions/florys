@@ -9,9 +9,11 @@
            <h1>Blog Categories</h1>
 
       {% for item in cat_menu_list %}
-          <ul>
-              <li><a href="{% url 'category' item|slugify %}">{{ item }}</a></li>
-          </ul>
+          <menu>
+              <li class="fw-bold">
+                  <a  class="" href="{% url 'category' item|slugify %}">{{ item }}</a>
+              </li>
+          </menu>
       {% endfor %}
         </div>
     </div>
