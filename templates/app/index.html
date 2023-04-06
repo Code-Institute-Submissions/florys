@@ -27,7 +27,7 @@
     <!--general navigation top bar-->
     <header class="p-2">
         <div id="logo">
-            <a href="#">
+            <a href="{% url 'home_page' %}">
                 Florys
                 <svg xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -98,29 +98,12 @@
               </a>
           </li>
 
-           <li class="nav-item">
-              <a href="{% url 'add_category' %}">
-                  Add Category
-              </a>
-          </li>
-
           <li class="nav-item">
               <a href="{% url 'category_list' %}">
                   View Categories
               </a>
           </li>
 
-          <li class="nav-item">
-              <a href="{% url 'account_email' %}">
-                  Change E-mail
-              </a>
-          </li>
-
-          <li class="nav-item">
-              <a href="{% url 'account_email' %}">
-                  Home
-              </a>
-          </li>
 
           <li class="nav-item">
             <button class="btn-general-style">
@@ -166,17 +149,23 @@
                     </button>
                     </div>
                 {% endfor %}
-            </div>
+        </div>
 
     {% block content %}
          <!--Intro section-->
-        <section>
+        <section class="mt-5">
             <div id="welcome-text">
                 <h2>Florys Souls</h2>
                 <p>Discover, Write, Enjoy...</p>
+                {% if not user.is_authenticated %}
                 <button class="btn-general-style">
                     <a href="{% url 'login'  %}">Join For Free!</a>
                 </button>
+                {% else %}
+                    <button class="btn-general-style">
+                    <a href="{% url 'blog_home'  %}">Go to the Blog!</a>
+                </button>
+                {% endif %}
             </div>
         </section>
     {% endblock %}
