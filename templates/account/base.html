@@ -11,21 +11,12 @@
     {% block extra_head %}
     {% endblock %}
 </head>
-<body class="text-center mt-2 background-wings">
+<body class="text-center">
 {% block body %}
-
-    {% if messages %}
-        <div class="p-2">
-            {% for message in messages %}
-                <div class="text-center border-bottom">{{ message }}</div>
-            {% endfor %}
-        </div>
-    {% endif %}
-
     <!--general navigation top bar-->
     <header class="p-1">
         <div id="logo">
-            <a href="#">
+            <a href={% url 'home_page' %}>
                 Florys
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px"
                      height="50px" version="1.1" viewBox="0 0 700 700">
@@ -94,12 +85,6 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{% url 'add_category' %}">
-                            Add Category
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
                         <a href="{% url 'category_list' %}">
                             View Categories
                         </a>
@@ -109,7 +94,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false"
-                           href="{% url 'show_profile_page' user.profile.id %}">
+                           href="{% url 'show_profile_page' user.id %}">
                             {{ user.username }}
                         </a>
 
@@ -127,17 +112,18 @@
                                     <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show
                                         Profile page</a>
                                 </li>
-                                <li>
-                                    <a href="{% url 'account_logout' %}">
-                                        Sign Out
-                                    </a>
-                                </li>
+
                             {% else %}
                                 <li>
                                     <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile
                                         Page</a>
                                 </li>
                             {% endif %}
+                            <li>
+                                <a href="{% url 'account_logout' %}">
+                                    Sign Out
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 {% else %}
