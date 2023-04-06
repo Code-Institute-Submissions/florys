@@ -10,11 +10,10 @@
 <div class="text-center">
     <h1>{% trans "Sign Up" %}</h1>
 
-    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+    <p>Already have an account? Then please <a href="{% url 'login' %}">sign in</a></p>
 </div>
 
 <div class="container">
-
         <div class="row">
             <div class="col-md-6 flex-item">
                 <div class="general-card-style text-center">
@@ -29,18 +28,12 @@
                                 <div class="d-grid">
                                     <button class="btn btn-dark mt-2" type="submit">{% trans "Sign Up" %}</button>
                                 </div>
-                                <a class="button secondaryAction text-dark text-center" href="{% url 'account_reset_password' %}">
+                                <a class="button secondaryAction text-dark text-center" href="{% url 'change_password' %}">
                                     {% trans "Forgot Password?" %}
                                 </a>
                           </div>
                             <div class="login-or border-top border-bottom my-3">
                                       {% trans 'OR' %}
-                            </div>
-
-                            <div class="socialaccount_ballot">
-                                  <div class="socialaccount_providers">
-                                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                                  </div>
                             </div>
                         </form>
                     </div>
