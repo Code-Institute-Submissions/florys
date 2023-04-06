@@ -13,5 +13,4 @@ urlpatterns = [
     path('category/<str:cats>/', views.CategoryView, name='category'),
     path('category-list/', views.CategoryListView, name='category_list'),
     path('detail/<int:pk>/comment/', views.AddCommentView.as_view(), name='add_comment')
-
 ]
