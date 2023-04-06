@@ -3,7 +3,7 @@ from django.urls import path, include
 from florys.views import InitialView
 
 urlpatterns = [
-    path('/', InitialView.as_view(), name='home_page'),
+    path('', InitialView.as_view(), name='home_page'),
     path('admin/', admin.site.urls),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
