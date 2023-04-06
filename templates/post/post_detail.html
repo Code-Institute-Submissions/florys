@@ -2,152 +2,140 @@
 {% load crispy_forms_filters %}
 {% load static %} {% block content %}
     {% load crispy_forms_tags %}
+    <div class="container-fluid">
+        <div class="col-md-offset-4 mt-3">
+            <div class="row">
+                <div class="general-card-style mw-100">
+                    {% if user.is_authenticated %}
 
+                        <a href="{% url 'blog_home' %}">Go Back</a> |
 
-    <div class="masthead">
-        <div class="container d-inline-flex">
-            <div class="general-card-style mw-100">
-                <div class="row g-0">
-                    <div class="col">
+                        {% if user.id == post.author.id %}
+                            <a href="{% url 'update_post' post.pk %}">Edit</a> |
+
+                            <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                        {% endif %}
+                        <!-- Post title goes in these h1 tags -->
+                        <h1 class="post-title">{{ post.title }}</h1>
+                        <p class="card-text">Category: {{ post.category | safe }}</p>
+
                         <div class="card-body">
-                            {% if user.is_authenticated %}
-
-                                <a href="{% url 'blog_home' %}">Go Back</a> |
-
-                                {% if user.id == post.author.id %}
-                                    <a href="{% url 'update_post' post.pk %}">Edit</a> |
-
-                                    <a href="{% url 'delete_post' post.pk %}">Delete</a>
-                                {% endif %}
-                                <!-- Post title goes in these h1 tags -->
-                                <h1 class="post-title">{{ post.title }}</h1>
-                                <p class="card-text">Category: {{ post.category | safe }}</p>
-
-
-                                </div>
-                                </div>
-                                <div class="card-body">
-                                    <!-- The featured image URL goes in the src attribute -->
-                                    {% if "placeholder" in post.featured_image.url %}
-                                        <img class="img-fluid rounded-start card-img-top" alt="..."
-                                             src="https://img.freepik.com/free-vector/flat-design-forest-landscape_23-2149162734.jpg?
+                            <!-- The featured image URL goes in the src attribute -->
+                            {% if "placeholder" in post.featured_image.url %}
+                                <img class="img-fluid rounded-start card-img-top" alt="..."
+                                     src="https://img.freepik.com/free-vector/flat-design-forest-landscape_23-2149162734.jpg?
                                 w=740&t=st=1678126866~exp=1678127466~hmac=b522e2486782e3c95e918606392b6022bdc5ea7f0c1bbac6aad59f1900ce6f43">
-                                    {% else %}
-                                        <img class="card-img-top" src="{{ post.featured_image.url }}" alt="">
-                                    {% endif %}
-                                    <p class="card-text ">{{ post.body | safe }}</p>
-                                </div>
-                                </div>
-                                <div class="row justify-content-around">
-                                    <div class="col-1">
-                                        {% with comments.count as total_comments %}
-                                            <strong class="text-secondary">
-                                                <i class="fa-regular fa-comment" style="color: #043f4e;"></i>
-                                                {{ total_comments }}
-                                            </strong>
-                                        {% endwith %}
-                                    </div>
-                                    <div class="col-1">
-                                        <strong>
-                                            {% if user.is_authenticated %}
-                                                <form class="d-inline" action="{% url 'post_like' post.pk %}"
-                                                      method="POST">
-                                                    {% csrf_token %}
-                                                    {% if liked %}
-                                                        <button type="submit" name="blogpost_id" value="{{ post.slug }}"
-                                                                class="btn-icon-style">
-                                                            <i class="fa-solid fa-heart fa-beat-fade"
-                                                               style="color: #731212;"></i>
-                                                        </button>
-                                                    {% else %}
-                                                        <button type="submit" name="blogpost_id" value="{{ post.slug }}"
-                                                                class="btn-icon-style">
-                                                            <i class="fa-regular fa-heart" style="color: #d71d1d;"></i>
-                                                        </button>
-                                                    {% endif %}
-                                                </form>
-                                            {% else %}
-                                                <span class="text-secondary"><i class="fa-thin fa-heart fa-bounce"></i></span>
-                                            {% endif %}
-                                            <span class="text-secondary">{{ post.number_of_likes }} </span>
-                                        </strong>
-                                    </div>
-                                </div>
-                                </div>
-                                <aside class="general-card-style">
-                                    <div>
-                                        <!-- Post author goes before the | the post's created date goes after -->
-                                        <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
-
-                                        <p class="small text-muted">
-                                            <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile
-                                                Page</a> |
-                                            {% for platform, url in post.author.profile.get_social_media_urls %}
-                                                <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |
-                                            {% endif %}
-                                            {% endfor %}
-                                        </p>
-                                        {% if post.author.profile.profile_pic.url %}
-                                            <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle w-25"
-                                                 alt="profile image">
-                                        {% else %}
-                                            <img src="{% static 'images/default_profile_pic.png' %}" class="w-25"
-                                                 alt="default profile image">
-                                        {% endif %}
-                                        {% if show_profile_page %}
-                                            <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile
-                                                Page</a>
-                                        {% endif %}
-
-                                        {% if post.author.profile.bio %}
-                                            <p>
-                                                {{ post.author.profile.bio | slice:'300' }}...
-                                            </p>
-                                            <p>This user currently has no bio...</p>
-                                        {% else %}
-                                        {% endif %}
-                                    </div>
-
-                                </aside>
-                                </div>
-                                </div>
-                                </div>
-
-                                <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <hr>
-                                    </div>
-                                </div>
-                                <div class="row comment-area">
-                                    <div class="mb-4 mt-3 rounded">
-                                        <h3>Comments:</h3>
-                                        <div class="card-body">
-                                            {% if not post.comments.all %}
-                                                <p>No Comments yet...</p>
-                                                <a href="{% url 'add_comment' post.pk %}">Add One Now</a>
-                                            {% else %}
-                                                {% for comment in post.comments.all %}
-                                                    <div class="comments" style="padding: 10px;">
-                                                        <p>Posted from: {{ user.username }}</p>
-                                                        <p class="font-weight-bold">
-                                                            <strong>{{ comment.name }}</strong>
-                                                            <span class=" text-muted font-weight-normal">
-                                        <strong>{{ comment.created_on }}</strong></span>
-                                                            wrote:
-                                                        </p>
-                                                        {{ comment.body | linebreaks }}
-                                                    </div>
-                                                    <!-- Our for loop ends here -->
-                                                {% endfor %}
-                                                <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
                             {% else %}
-                                Please Log In or Sign Up to see the content...
+                                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="">
                             {% endif %}
+                            <p class="card-text ">{{ post.body | safe }}</p>
+                        </div>
 
+                        <div class="row justify-content-around">
+                            <div class="col-1">
+                                {% with comments.count as total_comments %}
+                                    <strong class="text-secondary">
+                                        <i class="fa-regular fa-comment" style="color: #043f4e;"></i>
+                                        {{ total_comments }}
+                                    </strong>
+                                {% endwith %}
+                            </div>
+                            <div class="col-1">
+                                <strong>
+                                    {% if user.is_authenticated %}
+                                        <form class="d-inline" action="{% url 'post_like' post.pk %}"
+                                              method="POST">
+                                            {% csrf_token %}
+                                            {% if liked %}
+                                                <button type="submit" name="blogpost_id" value="{{ post.slug }}"
+                                                        class="btn-icon-style">
+                                                    <i class="fa-solid fa-heart fa-beat-fade"
+                                                       style="color: #731212;"></i>
+                                                </button>
+                                            {% else %}
+                                                <button type="submit" name="blogpost_id" value="{{ post.slug }}"
+                                                        class="btn-icon-style">
+                                                    <i class="fa-regular fa-heart" style="color: #d71d1d;"></i>
+                                                </button>
+                                            {% endif %}
+                                        </form>
+                                    {% else %}
+                                        <span class="text-secondary"><i class="fa-thin fa-heart fa-bounce"></i></span>
+                                    {% endif %}
+                                    <span class="text-secondary">{{ post.number_of_likes }} </span>
+                                </strong>
+                            </div>
+                        </div>
+
+                        <aside class="d-inline-block border-0">
+                            <div>
+                                <!-- Post author goes before the | the post's created date goes after -->
+                                <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
+
+                                <p class="small text-muted">
+                                    <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile
+                                        Page</a> |
+                                    {% for platform, url in post.author.profile.get_social_media_urls %}
+                                        <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |
+                                    {% endif %}
+                                    {% endfor %}
+                                </p>
+                                {% if post.author.profile.profile_pic.url %}
+                                    <img src="{{ post.author.profile.profile_pic.url }}"
+                                         class="rounded-circle w-25"
+                                         alt="profile image">
+                                {% else %}
+                                    <img src="{% static 'images/default_profile_pic.png' %}" class="w-25"
+                                         alt="default profile image">
+                                {% endif %}
+                                {% if show_profile_page %}
+                                    <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile
+                                        Page</a>
+                                {% endif %}
+
+                                {% if post.author.profile.bio %}
+                                    <p>
+                                        {{ post.author.profile.bio | slice:'300' }}...
+                                    </p>
+                                    <p>This user currently has no bio...</p>
+                                {% else %}
+                                {% endif %}
+                            </div>
+                        </aside>
+                        <div class="container mt-5">
+                        <div class="row comment-area">
+                            <div class="mb-4 mt-3 rounded">
+                                <h3>Comments:</h3>
+                                <div class="card-body">
+                                    {% if not post.comments.all %}
+                                        <p>No Comments yet...</p>
+                                        <a href="{% url 'add_comment' post.pk %}">Add One Now</a>
+                                    {% else %}
+                                        {% for comment in post.comments.all %}
+                                            <div class="comments" style="padding: 10px;">
+                                                <p>Posted from: {{ user.username }}</p>
+                                                <p class="font-weight-bold">
+                                                    <strong>{{ comment.name }}</strong>
+                                                    <span class=" text-muted font-weight-normal">
+                                        <strong>{{ comment.created_on }}</strong></span>
+                                                    wrote:
+                                                </p>
+                                                {{ comment.body | linebreaks }}
+                                            </div>
+                                            <!-- Our for loop ends here -->
+                                        {% endfor %}
+                                        <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        Please Log In or Sign Up to see the content...
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}
