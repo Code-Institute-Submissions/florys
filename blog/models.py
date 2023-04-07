@@ -70,7 +70,7 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
-    body = models.TextField()
+    body = models.TextField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
