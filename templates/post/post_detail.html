@@ -49,7 +49,7 @@
                                             {% if liked %}
                                                 <button type="submit" name="blogpost_id" value="{{ post.slug }}"
                                                         class="btn-icon-style">
-                                                    <i class="fa-solid fa-heart fa-beat-fade"
+                                                    <i class="fa-regular fa-heart"
                                                        style="color: #731212;"></i>
                                                 </button>
                                             {% else %}
@@ -72,9 +72,13 @@
                                 <!-- Post author goes before the | the post's created date goes after -->
                                 <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
 
+                                {% if post.author.profile.id %}
                                 <p class="small text-muted">
                                     <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile
                                         Page</a> |
+                                    {% else %}
+                                    <p>User profile not created yet</p>
+                                {% endif %}
                                     {% for platform, url in post.author.profile.get_social_media_urls %}
                                         <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |
                                     {% endif %}
