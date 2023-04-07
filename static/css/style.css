@@ -206,6 +206,20 @@ menu > li a {
     box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, .1);
 }
 
+.comments{
+    border: 2px solid grey;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, .1);
+}
+
+.comment-author{
+    border-right: 2px solid grey;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+
 .comment-area {
     padding: 1.5rem;
     border-radius: 1rem;
