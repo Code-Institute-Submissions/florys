@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic import ListView, DetailView, TemplateView
@@ -31,7 +32,6 @@ def CategoryListView(request):
 
 
 def CategoryView(request, cats):
-
     category_posts = Post.objects.filter(category=cats)
     return render(request, 'post/categories.html', {
         'cats': cats.title().replace('-', ' '),
@@ -102,7 +102,9 @@ class AddCommentView(CreateView):
     template_name = 'post/add_comment.html'
     success_url = reverse_lazy('blog_home')
 
-
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
+        comment = form.save(commit=False)
+        comment.user = self.request.user
+        comment.save()
         return super().form_valid(form)
