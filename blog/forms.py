@@ -31,6 +31,7 @@ class EditForm(forms.ModelForm):
 
         widgets = {
             'body': SummernoteWidget(),
+            'feature_image': forms.ImageField(),
             'snippet': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
