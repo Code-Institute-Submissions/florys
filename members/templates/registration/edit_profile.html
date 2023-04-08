@@ -7,21 +7,25 @@
 {% block head_title %}Edit Profile{% endblock %}
 
 {% block content %}
-<div class="text-center">
-</div>
-<div class="container">
+    <div class="text-center">
+    </div>
+    <div class="container">
         <div class="row">
+         <h1 class="mt-5">Edit General Account Info...</h1>
             <div class="col-md-6 flex-item">
                 <div class="text-center">
                     <div class="card-body">
                         <form method="post">
-                          {% csrf_token %}
-                          {{ form|crispy }}
-                          {% if redirect_field_value %}
-                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                          {% endif %}
-                        <button class="btn btn-custom" type="submit">Update Profile</button>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            {% if redirect_field_value %}
+                                <input type="hidden" name="{{ redirect_field_name }}"
+                                       value="{{ redirect_field_value }}"/>
+                            {% endif %}
+                            <button class="btn btn-custom mb-4" type="submit">Update Info</button>
                         </form>
+                        <span class="mb-4">OR</span> <br>
+                        <a href="{% url 'blog_home' %}">Go Back</a>
                     </div>
                 </div>
             </div>
