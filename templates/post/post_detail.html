@@ -7,17 +7,19 @@
             <div class="row">
                 <div class="card-custom mw-100">
                     {% if user.is_authenticated %}
-
-                        <a href="{% url 'blog_home' %}">Go Back</a> |
-
-                        {% if user.id == post.author.id %}
-                            <a href="{% url 'update_post' post.pk %}">Edit</a> |
-
-                            <a href="{% url 'delete_post' post.pk %}">Delete</a>
-                        {% endif %}
                         <!-- Post title goes in these h1 tags -->
                         <h1 class="post-title">{{ post.title }}</h1>
                         <p class="card-text">Category: {{ post.category | safe }}</p>
+                         {% if user.id == post.author.id %}
+                             <div class="py-2">
+                             <a href="{% url 'blog_home' %}">Go Back</a> |
+
+                            <a href="{% url 'update_post' post.pk %}">Edit</a> |
+
+                            <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                             </div>
+
+                        {% endif %}
 
                         <div class="card-body">
                             <!-- The featured image URL goes in the src attribute -->
@@ -75,12 +77,12 @@
                                 {% if post.author.profile.id %}
                                     <p class="small text-muted">
                                         <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile
-                                            Page</a> |
+                                            Page</a>
                                         {% else %}
                                     <p>User profile not created yet</p>
                                 {% endif %}
                                 {% for platform, url in post.author.profile.get_social_media_urls %}
-                                    <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |
+                                   | <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |
                                 {% endif %}
                                 {% endfor %}
                                 </p>
@@ -98,7 +100,7 @@
                                 {% endif %}
 
                                 {% if post.author.profile.bio %}
-                                    <p>
+                                    <p style="font-size: 12pt; margin-top:1rem">
                                         {{ post.author.profile.bio | slice:'300' }}...
                                     </p>
 
