@@ -6,7 +6,6 @@
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
     <div class="container text-center">
-        <p><a href="{%url 'blog_home' %}">Go Back</a></p>
         <div class="row">
             <h1>Update Post...</h1>
             <form method="POST">
@@ -15,6 +14,9 @@
 
             <button class="btn-custom mb-4">Update!</button>
             </form>
+            <span class="mb-4">OR</span>
+            <a href="{%url 'blog_home' %}">Go Back</a>
+
             </div>
     </div>
         {% else %}
