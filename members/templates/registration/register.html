@@ -7,33 +7,25 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h1>{% trans "Sign Up" %}</h1>
+    <div class="text-center mt-5">
+        <h1>{% trans "Sign Up" %}</h1>
+        <p>Already have an account? Then please <a href="{% url 'login' %}">sign in</a></p>
+    </div>
 
-    <p>Already have an account? Then please <a href="{% url 'login' %}">sign in</a></p>
-</div>
-
-<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-6 flex-item">
                 <div class="card-custom text-center">
                     <div class="card-body">
                         <form class="signup" id="signup_form" method="post">
-                          {% csrf_token %}
-                          {{ form|crispy }}
-                          {% if redirect_field_value %}
-                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                          {% endif %}
-                          <div class="d-grid">
-                                <div class="d-grid">
-                                    <button class="btn btn-dark mt-2" type="submit">{% trans "Sign Up" %}</button>
-                                </div>
-                                <a class="button secondaryAction text-dark text-center" href="{% url 'change_password' %}">
-                                    {% trans "Forgot Password?" %}
-                                </a>
-                          </div>
-                            <div class="login-or border-top border-bottom my-3">
-                                      {% trans 'OR' %}
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            {% if redirect_field_value %}
+                                <input type="hidden" name="{{ redirect_field_name }}"
+                                       value="{{ redirect_field_value }}"/>
+                            {% endif %}
+                            <div class="d-grid">
+                                <button class="btn btn-dark mt-2" type="submit">{% trans "Sign Up" %}</button>
                             </div>
                         </form>
                     </div>
