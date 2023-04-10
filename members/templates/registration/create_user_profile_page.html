@@ -1,24 +1,33 @@
 {% extends "account/base.html" %}
 {{ foobar | safe }}
-{%block title %}Create a New Profile Page! {% endblock %}
+{% block title %}Create a New Profile Page! {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
 
-    <div class="container text-center">
-        <div class="row">
-            <h1>Create Profile Page...</h1>
-            <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
+        <div class="container text-center">
+            <div class="row mt-5 p-5">
+                <h1>Create Profile Page...</h1>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-            {{ form.as_p }}
+                    {{ form.as_p }}
 
-            <button>Create Profile Page</button>
-            </form>
+                    <button class="btn-custom">Create Profile Page</button>
+                </form>
+                <div class="mt-5">
+                <a href="{% url 'blog_home' %}">Go Back to the blog!</a>
+                </div>
+            </div>
+
         </div>
-    </div>
 
-{% else %}
-    Ops! You are not allowed here...
-{% endif %}
-{%endblock%}
+    {% else %}
+        <div class="mt-5">
+            <h1>Ops! You are not allowed here...</h1>
+            <div class="mt-5">
+                <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
