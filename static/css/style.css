@@ -95,7 +95,6 @@ a{
     justify-content: space-between;
     align-items: center;
     z-index: initial;
-
 }
 
 .nav-menu{
@@ -203,6 +202,7 @@ menu > li a {
     border: 1px solid transparent;
     background-color: var(--bg-color);
     box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, .1);
+    display: inline-block;
 }
 
 .comment-list {
@@ -241,10 +241,15 @@ footer {
     margin-top: 5rem;
     text-align: center;
     margin-bottom: 1rem;
+    background: rgb(156, 162, 182);
+    padding:1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
 }
+
 
 .social-networks ul {
     list-style: none;
+    padding-left: 0;
 }
 
 .social-networks li {
