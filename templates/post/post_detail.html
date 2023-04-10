@@ -120,8 +120,8 @@
                                         {% else %}
                                             <div class="py-4">
                                             {% for comment in post.comments.all %}
-                                                <div class="comment d-flex justify-center align-center p-2"
-                                                     style="padding: 10px;">
+                                                <div class="comment d-flex justify-center align-center p-2 "
+                                                     style="padding: 10px; gap: 5rem;">
                                                     <div class="text-left w-25 comment-author">
                                                         {% if comment.user.profile.profile_pic.url %}
                                                             <img src="{{ comment.user.profile.profile_pic.url }}"
