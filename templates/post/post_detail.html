@@ -21,7 +21,7 @@
 
                         {% endif %}
 
-                        <div class="card-body">
+                        <div class="card-body" style="padding: 5rem;">
                             <!-- The featured image URL goes in the src attribute -->
                             {% if "placeholder" in post.featured_image.url %}
                                 <img class="img-fluid rounded-start card-img-top" alt="post image"
@@ -33,7 +33,7 @@
                             <p class="card-text ">{{ post.body | safe }}</p>
                         </div>
 
-                        <div class="row justify-content-around">
+                        <div class="row justify-content-around mb-5">
                             <div class="col-1">
                                 {% with comments.count as total_comments %}
                                     <strong class="text-secondary">
