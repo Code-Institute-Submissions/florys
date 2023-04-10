@@ -13,7 +13,7 @@
             {{ form.media }}
             {{ form.as_p }}
 
-            <button>Post</button>
+            <button class="btn-custom">Post</button>
             </form>
             </div>
     </div>
@@ -23,6 +23,11 @@
         document.getElementById("user").value = name;
     </script>
 {% else %}
-    Ops! You are not allowed here...
+    <div class="mt-5">
+            <h1>Ops! You are not allowed here...</h1>
+            <div class="mt-5">
+                <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
+            </div>
+        </div>
 {% endif %}
 {%endblock%}
