@@ -168,6 +168,33 @@
                 {% endif %}
             </div>
         </section>
+
+        <section class="mt-5 d-flex flex-wrap justify-content-center align-item-center ms-auto" style="gap: 1rem;">
+        <div class="card-custom mb-2">
+            <h3>What is Florys?</h3>
+        <p>Is a blog like website that is frequently updated with new content from every user!.
+            The term "Florys" comes from the words "Flora" from Latin Flōra (goddess of flowers).</p>
+        </div>
+
+        <div class="card-custom mb-2">
+            <h3>What are the main topics here?</h3>
+            <p>Firstly, the nature was the main theme around this blog, eventually, it became a multy-purpose blog like,
+                but still we emphasized the nature a lot!</p>
+        </div>
+
+        <div class="card-custom mb-2">
+            <h3>Is Florys free?</h3>
+            <p>Of course it is!, is all free to explore and to enjoy!</p>
+        </div>
+
+        <div class="card-custom mb-2">
+            <h3>What Can I do?</h3>
+        <p>You can get and account and explore all the contents that Florys has to offer,
+            <a href="{% url 'register' %}">click here to start!</a>
+        </p>
+        </div>
+
+        </section>
     {% endblock %}
     {% endblock %}
     {% block extra_body %}
@@ -176,7 +203,7 @@
      <!--footer section-->
         <footer>
             <h3>Follow Us!</h3>
-            <ul class="social-networks">
+            <ul class="social-networks" style="padding: 0;">
                 <li>
                     <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Visit our Facebook page (opens in a new tab)"><i class="fa-brands fa-facebook"></i></a>
                 </li>
@@ -193,7 +220,7 @@
                     <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit our Instagam page (opens in a new tab)"><i class="fa-brands fa-instagram"></i></a>
                 </li>
             </ul>
-            <p>All rights are reserved</p>
+            <p style="color: floralwhite">All rights are reserved</p>
         </footer>
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
