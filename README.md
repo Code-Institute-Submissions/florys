@@ -79,12 +79,30 @@ The remaining imagery will be uploaded by the author to the database.
 
 ## Database Diagram
 
-![Database Diagrama]() 
-To be uploaded...
+![Database Diagrama](static/images/florys_db_model.jpg) 
+In a simple blog app that uses Django and django-allauth for authentication, the relationships between the entities can be modeled as follows:
+
+Authentication and Profile: django-allauth provides authentication functionality, which can be used to authenticate users in the blog app. Once a user is authenticated, their profile can be created and associated with their user account. This is a one-to-one relationship between the authentication and profile entities, as a single authentication instance is associated with only one profile.
+
+Profile and Post: Each profile can have multiple posts associated with it. This is a one-to-many relationship between the profile and post entities, as a single profile can have multiple posts, but each post is associated with only one profile.
+
+Category and Post: Each post can be assigned to one or more categories. This is a many-to-many relationship between the category and post entities, as a single category can have multiple posts associated with it, and a single post can be assigned to multiple categories(although in the case of Florys a post can only have one Category at the moment!).
+
+Profile and Comment: Each profile can have multiple comments associated with it. This is a one-to-many relationship between the profile and comment entities, as a single profile can have multiple comments, but each comment is associated with only one profile.
+
+Post and Comment: Each post can have multiple comments associated with it. This is a one-to-many relationship between the post and comment entities, as a single post can have multiple comments, but each comment is associated with only one post.
+
+These relationships can be represented in a database schema using foreign keys and many-to-many relationships. For example, the post table could have a foreign key that references the profile table to establish the relationship between posts and profiles, and a many-to-many relationship could be used to establish the relationship between categories and posts.
 
 ## Features
 
-Work in progress...
+### Home Page
+![Home Page](static/images/florys_home_top.jpg)
+* The hero image welcomes the user with a short message advertising what the website is about.<br>
+
+### Home Page - Highlight Posts
+![Home Page - Highlight Posts](static/images/florys_home_body.jpg)
+* In this section of the homepage, users can get an idea about Florys and what it is about.<br>
 
 
 ### Languages Used
