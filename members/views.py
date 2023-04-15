@@ -6,6 +6,7 @@ from django.views.generic import DetailView, CreateView, TemplateView
 from .forms import SignUpForm, EditProfileForm, ChangePasswordForm, ProfilePageForm
 from blog.models import Profile
 from django.contrib import messages
+from django.contrib.auth.signals import user_logged_in
 
 
 # Create your views here.
@@ -24,6 +25,10 @@ class UserEditView(generic.UpdateView):
     template_name = 'registration/edit_profile.html'
     success_url = reverse_lazy('blog_home')
 
+    def form_valid(self, form):
+        messages.success(self.request, 'Settings updated!')
+        return super().form_valid(form)
+
     def get_object(self, queryset=None):
         return self.request.user
 
@@ -31,6 +36,10 @@ class UserEditView(generic.UpdateView):
 class PasswordsChangeView(PasswordChangeView):
     form_class = ChangePasswordForm
     success_url = reverse_lazy('password_success')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Password Updated!')
+        return super().form_valid(form)
 
 
 def password_success(request):
@@ -44,6 +53,7 @@ class CreateProfilePageView(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'Profile page created successfully!')
         return super().form_valid(form)
 
 
@@ -66,6 +76,18 @@ class EditProfilePageView(generic.UpdateView):
 
     success_url = reverse_lazy('blog_home')
 
+    def form_valid(self, form):
+        messages.success(self.request, 'Profile page edited successfully!')
+        return super().form_valid(form)
+
 
 class AccountLogout(TemplateView):
     template_name = 'registration/logout.html'
+
+
+def handle_login(sender, request, **kwargs):
+    messages.success(request, 'Welcome to Florys!')
+
+
+user_logged_in.connect(handle_login)
+
