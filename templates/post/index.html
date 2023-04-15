@@ -22,9 +22,9 @@
                             <div class="card-body">
                                 <div class="image-container">
                                     {% if "placeholder" in post.featured_image.url %}
-                                        <img class="card-img-top" src="/static/images/placeholder.png">
+                                        <img class="card-img-top" src="/static/images/placeholder.png" alt="placeholder image">
                                     {% else %}
-                                        <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                        <img class="card-img-top" src="{{ post.featured_image.url }}" alt="an image related to the post">
                                     {% endif %}
                                     <div class="image-flash">
                                         <a class="card-text"
