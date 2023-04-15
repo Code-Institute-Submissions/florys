@@ -21,7 +21,7 @@
 
                         {% endif %}
 
-                        <div class="card-body" style="padding: 5rem;">
+                        <div class="card-body custom-post-detail">
                             <!-- The featured image URL goes in the src attribute -->
                             {% if "placeholder" in post.featured_image.url %}
                                 <img class="img-fluid rounded-start card-img-top" alt="post image"
@@ -113,16 +113,16 @@
                             <div class="row comment-list">
                                 <div class="mb-4 mt-3 rounded">
                                     <h3>Comments:</h3>
-                                    <div class="card-body">
+                                    <div>
                                         {% if not post.comments.all %}
                                             <p>No Comments yet...</p>
                                             <a href="{% url 'add_comment' post.pk %}">Add One Now</a>
                                         {% else %}
-                                            <div class="py-4">
+                                            <div class="py-2">
                                             {% for comment in post.comments.all %}
-                                                <div class="comment d-flex justify-center align-center p-2 "
-                                                     style="padding: 10px; gap: 5rem;">
-                                                    <div class="text-left w-25 comment-author">
+                                                <div class="comment"
+                                                     style=" gap: 1rem;">
+                                                    <div class="text-left  comment-author">
                                                         {% if comment.user.profile.profile_pic.url %}
                                                             <img src="{{ comment.user.profile.profile_pic.url }}"
                                                                  class="profile-image"
@@ -130,14 +130,14 @@
                                                                  alt="profile image">
                                                         {% else %}
                                                             <img src="{% static 'images/default_profile_pic.png' %}"
-                                                                 class="w-50"
+                                                                 class="profile-image"
                                                                  alt="default profile image">
                                                         {% endif %}
                                                         <p>Posted from: {{ comment.user.username }}</p>
                                                     </div>
 
-                                                    <div class="w-75">
-                                                        <span class="font-weight-bold">{{ comment.name }}</span> |
+                                                    <div>
+                                                        <span class="font-weight-bold">{{ comment.name}}</span>
                                                         <span class=" text-muted font-weight-light text-justify">{{ comment.created_on }}</span>
                                                         <p>{{ comment.body | linebreaks }}</p>
                                                     </div>
