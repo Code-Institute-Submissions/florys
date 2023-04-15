@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block head_title %}{% endblock %}</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-            crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_head %}
     {% endblock %}
-  </head>
-  <body class="text-center mt-2 background-home">
-    {% block body %}
+</head>
+<body class="text-center mt-2 background-home">
+{% block body %}
 
     {% if messages %}
-      <div class="p-2">
-        {% for message in messages %}
-          <div class="text-center border-bottom">{{message}}</div>
-        {% endfor %}
-      </div>
+        <div class="p-2">
+            {% for message in messages %}
+                <div class="text-center border-bottom">{{ message }}</div>
+            {% endfor %}
+        </div>
     {% endif %}
 
     <!--general navigation top bar-->
@@ -83,150 +83,153 @@
             </a>
         </div>
 
-      <nav id="main-navigation">
-          <menu class="nav-menu">
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-              <a href="{% url 'blog_home' %}">
-                  View Blog
-              </a>
-          </li>
+        <nav id="main-navigation">
+            <menu class="nav-menu">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'blog_home' %}">
+                            View Blog
+                        </a>
+                    </li>
 
-          <li class="nav-item">
-              <a href="{% url 'add_post' %}">
-                  Add Post
-              </a>
-          </li>
+                    <li class="nav-item">
+                        <a href="{% url 'add_post' %}">
+                            Add Post
+                        </a>
+                    </li>
 
-          <li class="nav-item">
-              <a href="{% url 'category_list' %}">
-                  View Categories
-              </a>
-          </li>
-
-
-          <li class="nav-item">
-            <button class="btn-custom">
-                <a  href="{% url 'account_logout' %}">
-                   Sign Out
-              </a>
-            </button>
-          </li>
-
-          {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'category_list' %}">
+                            View Categories
+                        </a>
+                    </li>
 
 
-              <li class="nav-item">
-              <a href="{% url 'login' %}">
-                  Login
-              </a>
-          </li>
+                    <li class="nav-item">
+                        <button class="btn-custom">
+                            <a href="{% url 'account_logout' %}">
+                                Sign Out
+                            </a>
+                        </button>
+                    </li>
 
-          <li class="nav-item">
-              <a  href="{% url 'register' %}">
-                  Register
-              </a>
-          </li>
+                {% else %}
 
-          {% endif %}
 
-          </menu>
-          <div class="hamburger">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-          </div>
-      </nav>
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}">
+                            Login
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'register' %}">
+                            Register
+                        </a>
+                    </li>
+
+                {% endif %}
+
+            </menu>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
 
     </header>
-        <div class="col-md-8 offset-md-2">
-                {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg"
-                    role="alert">
+    <div class="col-md-8 offset-md-2">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg"
+                 role="alert">
 
-                    {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                    </button>
-                    </div>
-                {% endfor %}
-        </div>
+                {{ message | safe }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+        {% endfor %}
+    </div>
 
     {% block content %}
-         <!--Intro section-->
+        <!--Intro section-->
         <section class="mt-5">
             <div id="welcome-text">
                 <h2>Florys Souls</h2>
                 <p>Discover, Write, Enjoy...</p>
                 {% if not user.is_authenticated %}
-                <button class="btn-custom">
-                    <a href="{% url 'login'  %}">Join For Free!</a>
-                </button>
+                    <button class="btn-custom">
+                        <a href="{% url 'login' %}">Join For Free!</a>
+                    </button>
                 {% else %}
                     <button class="btn-custom">
-                    <a href="{% url 'blog_home'  %}">Go to the Blog!</a>
-                </button>
+                        <a href="{% url 'blog_home' %}">Go to the Blog!</a>
+                    </button>
                 {% endif %}
             </div>
         </section>
 
         <section class="mt-5 d-flex flex-wrap justify-content-center align-item-center ms-auto" style="gap: 1rem;">
-        <div class="card-custom mb-2">
-            <h3>What is Florys?</h3>
-        <p>Is a blog like website that is frequently updated with new content from every user!.
-            The term "Florys" comes from the words "Flora" from Latin Flōra (goddess of flowers).</p>
-        </div>
+            <div class="card-custom mb-2">
+                <h3>What is Florys?</h3>
+                <p>Is a blog like website that is frequently updated with new content from every user!.
+                    The term "Florys" comes from the words "Flora" from Latin Flōra (goddess of flowers).</p>
+            </div>
 
-        <div class="card-custom mb-2">
-            <h3>What are the main topics here?</h3>
-            <p>Firstly, the nature was the main theme around this blog, eventually, it became a multy-purpose blog like,
-                but still we emphasized the nature a lot!</p>
-        </div>
+            <div class="card-custom mb-2">
+                <h3>What are the main topics here?</h3>
+                <p>Firstly, the nature was the main theme around this blog, eventually, it became a multy-purpose blog
+                    like,
+                    but still we emphasized the nature a lot!</p>
+            </div>
 
-        <div class="card-custom mb-2">
-            <h3>Is Florys free?</h3>
-            <p>Of course it is!, is all free to explore and to enjoy!</p>
-        </div>
+            <div class="card-custom mb-2">
+                <h3>Is Florys free?</h3>
+                <p>Of course it is!, is all free to explore and to enjoy!</p>
+            </div>
 
-        <div class="card-custom mb-2">
-            <h3>What Can I do?</h3>
-        <p>You can get and account and explore all the contents that Florys has to offer,
-            <a href="{% url 'register' %}">click here to start!</a>
-        </p>
-        </div>
+            <div class="card-custom mb-2">
+                <h3>What Can I do?</h3>
+                <p>You can get and account and explore all the contents that Florys has to offer,
+                    <a href="{% url 'register' %}">click here to start!</a>
+                </p>
+            </div>
 
         </section>
     {% endblock %}
-    {% endblock %}
-    {% block extra_body %}
-    {% endblock %}
+{% endblock %}
+{% block extra_body %}
+{% endblock %}
 
-     <!--footer section-->
-        <footer>
-            <h3>Follow Us!</h3>
-            <ul class="social-networks" style="padding: 0;">
-                <li>
-                    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Visit our Facebook page (opens in a new tab)"><i class="fa-brands fa-facebook"></i></a>
-                </li>
+<!--footer section-->
+<footer>
+    <h3>Follow Us!</h3>
+    <ul class="social-networks" style="padding: 0;">
+        <li>
+            <a href="https://facebook.com" target="_blank" rel="noopener"
+               aria-label="Visit our Facebook page (opens in a new tab)"><i class="fa-brands fa-facebook"></i></a>
+        </li>
 
-                <li>
-                    <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Visit our Twitter page (opens in a new tab)"><i class="fa-brands fa-twitter"></i></a>
-                </li>
+        <li>
+            <a href="https://twitter.com" target="_blank" rel="noopener"
+               aria-label="Visit our Twitter page (opens in a new tab)"><i class="fa-brands fa-twitter"></i></a>
+        </li>
 
-                <li>
-                    <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="Visit our Youtube channel (opens in a new tab)"><i class="fa-brands fa-youtube"></i></a>
-                </li>
+        <li>
+            <a href="https://youtube.com" target="_blank" rel="noopener"
+               aria-label="Visit our Youtube channel (opens in a new tab)"><i class="fa-brands fa-youtube"></i></a>
+        </li>
 
-                <li>
-                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit our Instagam page (opens in a new tab)"><i class="fa-brands fa-instagram"></i></a>
-                </li>
-            </ul>
-            <p style="color: floralwhite">All rights are reserved</p>
-        </footer>
-    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  </body>
+        <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener"
+               aria-label="Visit our Instagam page (opens in a new tab)"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+    </ul>
+    <p style="color: floralwhite">All rights are reserved</p>
+</footer>
+
 <script>
-    setTimeout(function() {
+    setTimeout(function () {
         let messages = document.getElementById("msg");
         let alert = new bootstrap.Alert(messages);
         alert.close();
@@ -235,9 +238,9 @@
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
-    hamburger.addEventListener("click", () =>{
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
+    hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
         }
     )
 
@@ -247,5 +250,10 @@
 
     }))
 </script>
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
 </html>
 
