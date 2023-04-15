@@ -79,7 +79,8 @@ The remaining imagery will be uploaded by the author to the database.
 
 ## Database Diagram
 
-![Database Diagrama](static/images/florys_db_model.jpg) 
+![Database Diagramm](static/images/florys_db_model.jpg) 
+
 In a simple blog app that uses Django and django-allauth for authentication, the relationships between the entities can be modeled as follows:
 
 Authentication and Profile: django-allauth provides authentication functionality, which can be used to authenticate users in the blog app. Once a user is authenticated, their profile can be created and associated with their user account. This is a one-to-one relationship between the authentication and profile entities, as a single authentication instance is associated with only one profile.
