@@ -7,6 +7,7 @@ from .models import Post, Category, Comment
 from .forms import CommentForm, EditForm, PostForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 class HomeBlogView(ListView):
@@ -44,6 +45,10 @@ class AddPostView(CreateView):
     form_class = PostForm
     template_name = 'post/add_post.html'
 
+    def form_valid(self, form):
+        messages.success(self.request, 'Post Created in the Blog!')
+        return super().form_valid(form)
+
 
 class AddCategoryView(CreateView):
     model = Category
@@ -56,11 +61,19 @@ class UpdatePostView(UpdateView):
     form_class = EditForm
     template_name = 'post/update_post.html'
 
+    def form_valid(self, form):
+        messages.success(self.request, 'Post updated!')
+        return super().form_valid(form)
+
 
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'post/delete_post.html'
     success_url = reverse_lazy('blog_home')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Your post was removed!')
+        return super().form_valid(form)
 
 
 class PostList(generic.ListView):
@@ -105,6 +118,9 @@ class AddCommentView(CreateView):
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
         comment = form.save(commit=False)
+        messages.success(self.request, 'Your comment is published!')
+
         comment.user = self.request.user
         comment.save()
         return super().form_valid(form)
+
