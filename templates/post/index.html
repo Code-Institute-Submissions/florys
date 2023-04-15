@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="col-md-8 offset-md-2">
+        <div>
         {% for message in messages %}
         <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg"
              role="alert">
