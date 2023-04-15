@@ -13,6 +13,15 @@
   <section class="overflow-hidden background-login">
     <div class="container mt-5">
         <div class="row">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg"
+             role="alert">
+
+            {{ message | safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
             <div class="col-md-6 flex-item">
                 <div class="card-custom text-center mb-5">
                     <div class="card-body">
