@@ -10,7 +10,7 @@
 :root {
     --bg-color: #f5f5f5 ;
     --fg-color: #203749;
-    --light-grey: #87889e;
+    --nav-item: white;
     --mild-green: #EAE7B1;
     --text-color: #9ca2b6;
     --text-hover: #203980;
@@ -174,7 +174,7 @@ menu > li a {
     border-radius: 1rem;
     object-fit: cover;
     aspect-ratio: 1;
-    width: 10%;
+    width: 20%;
 }
 
 .background-home{
@@ -193,6 +193,13 @@ menu > li a {
     height: 100vh;
 }
 
+.custom-post-detail{
+    padding:50px;
+    border: 1px solid transparent;
+    background-color: var(--bg-color);
+    box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, .1);
+    border-radius: 1rem;
+}
 
 .card-custom {
     width: 100%;
@@ -206,7 +213,10 @@ menu > li a {
 }
 
 .comment-list {
-    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     border-radius: 1rem;
     backdrop-filter: blur(0.10rem);
     box-shadow: 0 0 15px rgba(0, 0, 0, .2);
@@ -218,6 +228,7 @@ menu > li a {
     margin-top: 2rem;
     border-radius: 1rem;
     box-shadow: 0 5px 10px 2px rgba(0, 0, 0, .1);
+    padding:25px;
 }
 
 .comment-author{
@@ -305,7 +316,9 @@ footer p {
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        background: var(--light-grey);
+        background: var(--nav-item);
+        font-weight: bold;
+
     }
 
     .nav-item{
