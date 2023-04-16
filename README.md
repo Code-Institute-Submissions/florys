@@ -3,7 +3,7 @@
 Project milestone 4 for Code Institute Full-stack development program.
 This project is a Full Stack website built using the Django framework. Florys Blog is a multipurpose
 blog, but with the nature as being the main theme.
-The Users can look for a specific blog post. When the user is logged in, they can also 
+The Users can create, look, edit and delete a blog post. When the user is logged in, they can also 
 like/unlike a post and comment on a post. They can also share their ideas by adding a post 
 on the Blog and upload or update their user image and details.
 
@@ -51,6 +51,12 @@ README Table Content
 
 
 
+### Agile Methodology
+
+All functionality and development of this project were managed using GitHub which Projects can be found
+[here](https://github.com/users/sebhd1/projects/4)
+
+
 ### The Scope
 
 #### Main Site Goals
@@ -65,15 +71,18 @@ README Table Content
 
 #### Colours
 
-Work in progress..
+![Colours Palete](static/images/florys_colors_palete.png)
+
+* The colour scheme is kept simple and for a minimal style blog like.
 
 #### Typography
 
-Work in progress..
+* The Roboto Mono font is used as the main font for the whole project.
+
 
 #### Imagery
 
-* All the imagery is related to the posts and website design. Only 2 images are static.
+* All the imagery is related to the posts and website design. Only 3 images are static.
 The remaining imagery will be uploaded by the author to the database.
 
 
@@ -97,6 +106,8 @@ These relationships can be represented in a database schema using foreign keys a
 
 ## Features
 
+The overall blog style is intended to be minimal and intuitive.
+
 ### Home Page
 ![Home Page](static/images/florys_home_top.jpg)
 * The hero image welcomes the user with a short message advertising what the website is about.<br>
@@ -104,6 +115,61 @@ These relationships can be represented in a database schema using foreign keys a
 ### Home Page - Highlight Posts
 ![Home Page - Highlight Posts](static/images/florys_home_body.jpg)
 * In this section of the homepage, users can get an idea about Florys and what it is about.<br>
+
+
+## Login Page 
+![Login Page](static/images/florys_login.jpg)
+* The user can sign in just with a username and password.
+
+
+## Register Page
+![Register Page](static/images/florys_register.jpg)
+* The user can register by filling up all the required fields. It will be then redirect to the login screen.
+
+
+## Blog 
+![Blog](static/images/florys_blog.jpg)
+* In the Blog section, the user can view all the blog post created by others.
+
+
+## Blog - Categories
+![Blog](static/images/florys_category.jpg)
+* This section is for the user to look up for a specific category, on click, it will open only the posts within that category
+
+
+## Blog - Add Post
+![Blog - Add Post](static/images/florys_blog_add_post.jpg)
+* Here is where the user can create a post to be viewed by all the users in the blog section.
+
+
+## Blog - Edit / Delete Post
+![Blog - Post](static/images/florys_blog_edit.jpg)
+* The creator can update or delete only its own posts.
+
+
+## Blog - Post Comments / Likes
+![Blog - Comments / Likes](static/images/florys_comment_like.jpg)
+* The user can register by filling up all the required fields. It will be then redirect to the login screen.
+
+
+
+## Blog - User Settings
+![User Settings](static/images/florys_user_settings.jpg)
+* I decided to group all the user settings under the dropdown menu, where the user can edit the profile and the personal settings.
+If the user is new, it can create its own personal profile with a bio, links ecc.. 
+
+
+
+## Admin Panel/Superuser
+![No Search Found](static/images/florys_blog_superuser.jpg)
+
+* On the Admin Panel, as an admin/superuser I have full access to CRUD functionality, so I can view, create, edit and
+delete the following ones:
+1. Posts
+2. Comments
+3. Author
+4. Categories
+5. Profiles
 
 
 ### Languages Used
@@ -164,8 +230,6 @@ These relationships can be represented in a database schema using foreign keys a
 ### Testing
 Testing results [here](TESTING.md)
 
-work in progress...
-
 
 ## Creating the Django app
 
@@ -211,9 +275,7 @@ App
 1. Create a runtime.txt `python-3.8.13`
 2. Create a Procfile `web: gunicorn your_project_name.wsgi`
 3. When development is complete change the debug setting to: `DEBUG = False` in settings.py
-4. In this project the summernote editor was used so for this to work in Heroku add: `X_FRAME_OPTIONS = SAMEORIGIN `to
-   settings.py.
-5. In Heroku settings, delete the config vars for `DISABLE_COLLECTSTATIC = 1`
+4. In Heroku settings, delete the config vars for `DISABLE_COLLECTSTATIC = 1`
 
 ## Forking This Project
 
@@ -240,7 +302,13 @@ to copy the URL
 
 ### Content
 
-* The images were taken from [Unsplash](https://unsplash.com/)
+- I used fonts from [Google Fonts](https://fonts.google.com/) for this project.
+
+- I used Stack Overflow for general troubleshooting and issues with grid spacing.
+
+- Feedback and comments from the reviewer of my portfolio project number 1/2/3 were taken into account for this project when running tests and identifying and fixing bugs.
+
+* The static images were taken from [Unsplash](https://unsplash.com/)
 
 
 ### Information Sources / Resources
@@ -249,3 +317,8 @@ to copy the URL
 * [Stack Overflow](https://stackoverflow.com/)
 * [Scrimba - Pyhton](https://scrimba.com/learn/python)
 
+
+### Acknowledgements
+This application was executed and completed as a portfolio 4 Project for the full stack diploma at [Code Institute](https://codeinstitute.net/).
+
+Sebastiano Ballotta, 2023.
