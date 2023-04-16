@@ -1,1 +1,1 @@
-web: gunicorn florys.wsgi:application --log-file -
+web: gunicorn florys.wsgi:application
