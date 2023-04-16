@@ -6,7 +6,6 @@
         {% for message in messages %}
         <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg"
              role="alert">
-            <p>You are logged in as: {{ user.username }}</p>
             {{ message | safe }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             </button>
