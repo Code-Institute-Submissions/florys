@@ -130,6 +130,15 @@ it started to present some bugs do I removed both.
 - Although the checks are performed in the settings.py as not only, the email on the register form does not appear to be registered unique.
 This is a bug that I will be planning to address in the future.
 
+- I had a couple of issues during the deployment phase, with the config and general settings in Heroku, but the app is running fine.
+
+
+## Further Implementations
+
+- Resolving the previous mentioned bugs.
+- The user cannot delete a profile at the moment, this is something that I am planning to implement.
+- Login with third parties, such as google and/or GitHub.
+
 
 
 
