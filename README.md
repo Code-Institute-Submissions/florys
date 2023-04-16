@@ -24,6 +24,13 @@ README Table Content
       - [Imagery](#imagery)
   - [Database Diagram](#database-diagram)
   - [Features](#features)
+  - [Languages](#languages-used)
+  - [General Tools](#frameworks---libraries---programs-used)
+  - [Testing](#testing)
+  - [Creating The Django App](#creating-the-django-app)
+  - [Deployment](#deployment-of-this-project)
+  - [Forking](#forking-this-project)
+  - [Credits](#credits)
     
 
 ## User Experience - UX
