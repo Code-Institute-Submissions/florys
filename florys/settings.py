@@ -33,13 +33,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# if os.environ.get('ON_HEROKU', '0') == '0':
-#     DEBUG = True
-# else:
-#     DEBUG = False
-
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["florys-app.herokuapp.com", '127.0.0.1', "localhost"]
 
@@ -173,6 +167,8 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+
 
 # SIGN UP PARAMETERS AND EMAIL AUTH
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
