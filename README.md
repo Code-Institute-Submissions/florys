@@ -41,7 +41,7 @@ README Table Content
 
 1. Like/unlike posts.
 2. Comment on posts.
-3. Delete my previous comments. (work in progress...)
+3. Delete my previous comments. (future update)
 4. Manage my profile by updating my details and user image.
 5. Edit my post posted previously.
 6. Delete my post posted previously.
@@ -177,6 +177,7 @@ delete the following ones:
 3. Author
 4. Categories
 5. Profiles
+6. Users
 
 
 ### Languages Used
