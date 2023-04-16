@@ -116,8 +116,23 @@ the aspect-ratio is set and working properly and therefore is a false positive. 
 ### Backend/Admin Panel
 * I have tested the Admin Panel repeatedly since the start of the project development. All the models are working without issues.  
   I have created, deleted, and updated data in all models without errors. The models have the behavior expected for what they were built for.
-* 
+
 
 ### Manual Test Case
 The Test case for this project can be found [here](https://docs.google.com/spreadsheets/d/1CiuYo534FCLScvpeDLh2PPmHYfuY1Ati7bLFGkS_Fq4/edit?usp=sharing)
 
+
+## Bugs
+
+- I initially implemented the login with google and github but, it was working fine at first, but as the application got bigger,
+it started to present some bugs do I removed both. 
+
+- Although the checks are performed in the settings.py as not only, the email on the register form does not appear to be registered unique.
+This is a bug that I will be planning to address in the future.
+
+
+
+
+
+Overall the application works, and it is supposed to do what it says, which is blogging. 
+There are no major unfixed issues, the user is able to register, login and start blogging. 
