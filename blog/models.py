@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
 from django.urls import reverse
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -9,7 +8,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    profile_pic = CloudinaryField('image', blank=True)
+    profile_pic = models.ImageField(blank=True)
     website_url = models.CharField(max_length=200, null=True, blank=True)
     facebook_url = models.CharField(max_length=200, null=True, blank=True)
     twitter_url = models.CharField(max_length=200, null=True, blank=True)
@@ -46,7 +45,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     updated_on = models.DateTimeField(auto_now=True)
     body = models.TextField()
-    featured_image = CloudinaryField('image', default='placeholder', blank=True)
+    featured_image = models.ImageField(blank=True)
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=255, default='trips')
