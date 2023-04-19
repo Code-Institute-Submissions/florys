@@ -1,79 +1,72 @@
 {% extends "account/base.html" %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        <div>
-        {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg"
-             role="alert">
-            {{ message | safe }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            </button>
-        </div>
-        {% endfor %}
+{% if user.is_authenticated %}
+<div>
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
+        {{ message | safe }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+    {% endfor %}
 
 
-        <div class="container-fluid">
-            <div class="col-md-offset-4 mt-3">
-                <div class="row">
-                    {% for post in object_list %}
-                        <div class="card-custom mb-4">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    {% if "placeholder" in post.featured_image.url %}
-                                        <img class="card-img-top" src="/static/images/placeholder.png" alt="placeholder image">
-                                    {% else %}
-                                        <img class="card-img-top" src="{{ post.featured_image.url }}" alt="an image related to the post">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <a class="card-text"
-                                           href="{% url 'category' post.category %}">Category: {{ post.category | safe | slugify }}</a>
-                                        <p class="author fw-normal">Author: {{ post.author }}</p>
-                                    </div>
-                                </div>
-                                <a href="{% url 'post_detail' post.pk %}" class="post-link">
-                                    <h2 class="card-title fw-bold">{{ post.title | slice:"55" | safe }}</h2>
-                                    <p class="card-text fw-normal">{{ post.excerpt | slice:"100" | safe }}</p>
-                                </a>
-                                <hr/>
-                                <p class="text-muted font created-on-text mt-4 mb-4">{{ post.created_on }} <i
-                                        class="far fa-heart"></i>
-                                    {{ post.number_of_likes }}</p>
-                                {% if user.is_authenticated %}
-                                    {% if user.id == post.author.id %}
-                                        <a class="fw-lighter" href="{% url 'update_post' post.pk %}">Edit</a>
-                                        <a class="fw-lighter" href="{% url 'delete_post' post.pk %}">Delete</a>
-                                    {% endif %}
-                                {% endif %}
+    <div class="container-fluid">
+        <div class="col-md-offset-4 mt-3">
+            <div class="row">
+                {% for post in object_list %}
+                <div class="card-custom mb-4">
+                    <div class="card-body">
+                        <div class="image-container">
+                            {% if post.featured_image %}
+                            <img class="card-img-top" src="{{post.featured_image.url}}" alt="placeholder image">
+                            {% else %}
+                            <img class="card-img-top" src="" alt="an image related to the post">
+                            {% endif %}
+                            <div class="image-flash">
+                                <a class="card-text" href="{% url 'category' post.category %}">Category:
+                                    {{ post.category | safe | slugify }}</a>
+                                <p class="author fw-normal">Author: {{ post.author }}</p>
                             </div>
                         </div>
-                    {% endfor %}
+                        <a href="{% url 'post_detail' post.pk %}" class="post-link">
+                            <h2 class="card-title fw-bold">{{ post.title | slice:"55" | safe }}</h2>
+                            <p class="card-text fw-normal">{{ post.excerpt | slice:"100" | safe }}</p>
+                        </a>
+                        <hr />
+                        <p class="text-muted font created-on-text mt-4 mb-4">{{ post.created_on }} <i
+                                class="far fa-heart"></i>
+                            {{ post.number_of_likes }}</p>
+                        {% if user.is_authenticated %}
+                        {% if user.id == post.author.id %}
+                        <a class="fw-lighter" href="{% url 'update_post' post.pk %}">Edit</a>
+                        <a class="fw-lighter" href="{% url 'delete_post' post.pk %}">Delete</a>
+                        {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
-                {% if is_paginated %}
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center">
-                            {% if page_obj.has_previous %}
-                                <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}"
-                                                         class="page-link">&laquo; PREV </a></li>
-                            {% endif %}
-                            {% if page_obj.has_next %}
-                                <li class="page-item"><a href="?page={{ page_obj.next_page_number }}"
-                                                         class="page-link"> NEXT &raquo;</a></li>
-                            {% endif %}
-                        </ul>
-                    </nav>
-                {% endif %}
+                {% endfor %}
             </div>
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo;
+                            PREV </a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT
+                            &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
         </div>
+    </div>
     {% else %}
-        <div class="alert alert-warning" role="alert">
-            Please log in to see the content or sign up!
-        </div>
+    <div class="alert alert-warning" role="alert">
+        Please log in to see the content or sign up!
+    </div>
     {% endif %}
-{% endblock %}
-
-
-
-
-
-
+    {% endblock %}
