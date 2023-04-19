@@ -20,9 +20,10 @@
                     <div class="card-body">
                         <div class="image-container">
                             {% if post.featured_image %}
-                            <img class="card-img-top" src="{{post.featured_image.url}}" alt="placeholder image">
+                            <img class="card-img-top" src="{{post.featured_image.url}}"
+                                alt="an image related to the post">
                             {% else %}
-                            <img class="card-img-top" src="" alt="an image related to the post">
+                            <img class="card-img-top" src="" alt="placeholder image">
                             {% endif %}
                             <div class="image-flash">
                                 <a class="card-text" href="{% url 'category' post.category %}">Category:

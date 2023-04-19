@@ -4,26 +4,26 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    {% if user.id == post.author.id %}
-    <div class="container text-center">
-        <div class="row">
-            <h1>Update Post...</h1>
-            <form method="POST">
+{% if user.id == post.author.id %}
+<div class="container text-center">
+    <div class="row">
+        <h1>Update Post...</h1>
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
 
             <button class="btn-custom mb-4">Update!</button>
-            </form>
-            <span class="mb-4">OR</span>
-            <a href="{%url 'blog_home' %}">Go Back</a>
+        </form>
+        <span class="mb-4">OR</span>
+        <a href="{%url 'blog_home' %}">Go Back</a>
 
-            </div>
     </div>
-        {% else %}
-            You are not allowed here! (and you know it...)
-    {% endif %}
+</div>
+{% else %}
+You are not allowed here! (and you know it...)
+{% endif %}
 
 {% else %}
-    You are not allowed here! (and you know it...)
+You are not allowed here! (and you know it...)
 {% endif %}
 {%endblock%}
