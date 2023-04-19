@@ -15,7 +15,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = "os.environ.get('SECRET_KEY')"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'florys.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.parse("postgres://tbyanqca:isjjLd2taWoZ0Cp_paXx8sberxtJH7kk@snuffleupagus.db.elephantsql.com/tbyanqca")
 }
 
 # DATABASES = {
@@ -180,4 +180,11 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
+}
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dvs63p3ls',
+    'API_KEY': '596822732183325',
+    'API_SECRET': 'OWi_6X9B0dsTjPyRHIAX1o8mbiI',
 }
