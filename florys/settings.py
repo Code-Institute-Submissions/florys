@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'florys.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': dj_database_url.parse("postgres://tbyanqca:isjjLd2taWoZ0Cp_paXx8sberxtJH7kk@snuffleupagus.db.elephantsql.com/tbyanqca")
+# }
+
 DATABASES = {
-    'default': dj_database_url.parse("postgres://tbyanqca:isjjLd2taWoZ0Cp_paXx8sberxtJH7kk@snuffleupagus.db.elephantsql.com/tbyanqca")
+    'default': dj_database_url.parse("os.environ.get('DATABASE_URL')")
 }
 
 # DATABASES = {
@@ -139,9 +143,9 @@ USE_TZ = True
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # aws settings
-AWS_STORAGE_BUCKET_NAME = "my-flory"
-AWS_ACCESS_KEY_ID = "AKIA2RQIZOKVH35NDNMX"
-AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "os.environ.get('BUCKET_NAME')"
+AWS_ACCESS_KEY_ID = "os.environ.get('AWS_ACCESS_KEY')"
+AWS_SECRET_ACCESS_KEY = "os.environ.get('AWS_SECRET_KEY')"
 AWS_DEFAULT_ACL = "public-read"
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
@@ -208,8 +212,8 @@ MESSAGE_TAGS = {
 }
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dvs63p3ls',
-    'API_KEY': '596822732183325',
-    'API_SECRET': 'OWi_6X9B0dsTjPyRHIAX1o8mbiI',
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dvs63p3ls',
+#     'API_KEY': '596822732183325',
+#     'API_SECRET': 'OWi_6X9B0dsTjPyRHIAX1o8mbiI',
+# }
