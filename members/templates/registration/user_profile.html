@@ -8,39 +8,37 @@
 {% block head_title %}{% trans "User Profile..." %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-    <div class="card mb-3 p-1">
-        <div class="row g-0 mt-5">
-            <div class="col-md-4">
-                {% if page_user.user.profile.profile_pic %}
-                    <img src="{{ page_user.user.profile.profile_pic.url }}" class="profile-image w-25"
-                         alt="user profile image">
-                {% else %}
-                    <img src="{% static 'images/default_profile_pic.png' %}" class="w-25"
-                         alt="default user profile image">
-                {% endif %}
-            </div>
-            <div class="card-body p-2">
-                <h5 class="card-title">{{ page_user }}</h5>
-                <p class="card-text">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</p>
-                <p>{{ user.profile.bio }}</p>
+<div class="card mb-3 p-1">
+    <div class="row g-0 mt-5">
+        <div class="col-md-4">
+            {% if page_user.user.profile.profile_pic %}
+            <img src="{{ page_user.user.profile.profile_pic.url }}" class="profile-image w-25" alt="user profile image">
+            {% else %}
+            <img src="{% static 'images/default_profile_pic.png' %}" class="w-25" alt="default user profile image">
+            {% endif %}
+        </div>
+        <div class="card-body p-2">
+            <h5 class="card-title">{{ page_user }}</h5>
+            <p class="card-text">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</p>
+            <p>{{ user.profile.bio }}</p>
 
-                {% for platform, url in page_user.user.profile.get_social_media_urls %}
-                    <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |{% endif %}
-                {% endfor %}
-            </div>
+            {% for platform, url in page_user.user.profile.get_social_media_urls %}
+            <a href="{{ url }}">{{ platform }}</a>{% if not forloop.last %} |{% endif %}
+            {% endfor %}
         </div>
     </div>
-    <div class="mt-5">
-            <a href="{% url 'blog_home' %}">Go Back to the Blog!</a>
-        </div>
+</div>
+<div class="mt-5">
+    <a href="{% url 'blog_home' %}">Go Back to the Blog!</a>
+</div>
 {% else %}
 
+<div class="mt-5">
+    <h1>Ops! You are not allowed here...</h1>
     <div class="mt-5">
-        <h1>Ops! You are not allowed here...</h1>
-        <div class="mt-5">
-            <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
-        </div>
+        <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
     </div>
+</div>
 {% endif %}
 
 {% endblock %}

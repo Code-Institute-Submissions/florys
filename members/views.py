@@ -34,7 +34,8 @@ class UserEditView(generic.UpdateView):
 
 
 class PasswordsChangeView(PasswordChangeView):
-    form_class = ChangePasswordForm
+    # form_class = ChangePasswordForm 
+    template_name = 'members/change_password.html'
     success_url = reverse_lazy('password_success')
 
     def form_valid(self, form):

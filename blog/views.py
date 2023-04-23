@@ -63,7 +63,7 @@ class UpdatePostView(UpdateView):
 
     def form_valid(self, form):
         messages.success(self.request, 'Post updated!')
-        return super().form_valid(form)
+        return super().form_valid(form) 
 
 
 class DeletePostView(DeleteView):

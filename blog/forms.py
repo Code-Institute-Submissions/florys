@@ -31,7 +31,7 @@ class EditForm(forms.ModelForm):
 
         widgets = {
             'body': SummernoteWidget(),
-            'feature_image': forms.ImageField(),
+            # 'feature_image': forms.ImageField(),
             'snippet': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
@@ -39,7 +39,7 @@ class EditForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name', 'body')
+        fields = ('name', 'body') 
         widgets = {
             'body': forms.Textarea(attrs={'class': 'form-control'}),
         }

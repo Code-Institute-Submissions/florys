@@ -2,31 +2,31 @@
 {% block title %}View The Categories {% endblock %}
 
 {% block content %}
-    {% if user.is_authenticated %}
+{% if user.is_authenticated %}
 
-        <div class="container text-center">
-            <div class="row mt-5 p-5">
-                <h1>Blog Categories</h1>
+<div class="container text-center">
+    <div class="row mt-5 p-5">
+        <h1>Blog Categories</h1>
 
-                {% for item in cat_menu_list %}
-                    <menu>
-                        <li class="fw-bold mt-2 mb-2">
-                            <a class="lead" href="{% url 'category' item|slugify %}">{{ item }}</a>
-                        </li>
-                    </menu>
-                {% endfor %}
-            </div>
-            <div>
-                <a href="{% url 'blog_home' %}">Go Back to the Blog!</a>
-            </div>
-        </div>
-    {% else %}
-        <div class="mt-5">
-            <h1>Ops! You are not allowed here...</h1>
-            <div class="mt-5">
-                <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
-            </div>
-        </div>
-    {% endif %}
+        {% for item in cat_menu_list %}
+        <menu>
+            <li class="fw-bold mt-2 mb-2">
+                <a class="lead" href="{% url 'category' item %}">{{ item }}
+                </a>
+            </li>
+        </menu>
+        {% endfor %}
+    </div>
+    <div>
+        <a href="{% url 'blog_home' %}">Go Back to the Blog!</a>
+    </div>
+</div>
+{% else %}
+<div class="mt-5">
+    <h1>Ops! You are not allowed here...</h1>
+    <div class="mt-5">
+        <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
-

@@ -1,60 +1,59 @@
 {% extends "account/base.html" %}
-{% block content %}
-    {% if user.is_authenticated %}
-        {% if category_posts %}
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Blog Entries Column -->
-                    <div class="mt-5 p-2">
-                        <h1 class="py-2">{{ cats }}</h1>
-                        {% for post in category_posts %}
-                            <div class="card-custom mb-4">
-                                <div class="card-body">
-                                    <div class="image-container">
-                                        {% if "placeholder" in post.featured_image.url %}
-                                            <img class="card-img-top"
-                                                 src="https://img.freepik.com/free-vector/flat-design-forest-landscape_23-2149162734.jpg?
-                                    w=740&t=st=1678126866~exp=1678127466~hmac=b522e2486782e3c95e918606392b6022bdc5ea7f0c1bbac6aad59f1900ce6f43">
-                                        {% else %}
-                                            <img class="card-img-top" src=" {{ post.featured_image.url }}">
-                                        {% endif %}
-                                        <div class="image-flash">
-                                            <p class="author">Author: {{ post.author }}</p>
-                                            {% if user.is_authenticated %}
-                                                <a href="{% url 'update_post' post.pk %}">Edit</a>
-                                                <a href="{% url 'delete_post' post.pk %}">Delete</a>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'post_detail' post.pk %}" class="post-link">
-                                        <h2 class="card-title">{{ post.title | slice:"55" | safe }}</h2>
-                                        <p class="card-text">{{ post.excerpt | slice:"100" | safe }}</p>
-                                    </a>
-                                    <hr/>
-                                    <p class="card-text text-muted h6">{{ post.created_on }} <i
-                                            class="far fa-heart"></i>
-                                        {{ post.number_of_likes }}</p>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        {% else %}
-            <div class="mt-5">
-                <h1>Ops! this page does not exists!...</h1>
-                <div class="mt-5">
-                    <a href="{% url 'blog_home' %}">Go Back to the Blog!</a>
-                </div>
-            </div>
-        {% endif %}
-    {% else %}
-        <div class="mt-5">
-            <h1>Ops! You are not allowed here...</h1>
-            <div class="mt-5">
-                <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
-            </div>
-        </div>
-    {% endif %}
-{% endblock %}
+{% load static %}
 
+{% block content %}
+{% if user.is_authenticated %}
+
+{% if category_posts %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="mt-5 p-2">
+            <h1 class="py-2">{{ cats }}</h1>
+            {% for post in category_posts %}
+            <div class="card-custom mb-4">
+                <div class="card-body">
+                    <div class="image-container">
+                        {% if  post.featured_image %}
+                        <img class="card-img-top" src="{{post.featured_image.url}}">
+                        {% else %}
+                        <img class="card-img-top" src="{% static 'images/placeholder.png' %}">
+                        {% endif %}
+                        <div class="image-flash">
+                            <p class="author">Author: {{ post.author }}</p>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'update_post' post.pk %}">Edit</a>
+                            <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <a href="{% url 'post_detail' post.pk %}" class="post-link">
+                        <h2 class="card-title">{{ post.title | slice:"55" | safe }}</h2>
+                        <p class="card-text">{{ post.excerpt | slice:"100" | safe }}</p>
+                    </a>
+                    <hr />
+                    <p class="card-text text-muted h6">{{ post.created_on }} <i class="far fa-heart"></i>
+                        {{ post.number_of_likes }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="mt-5">
+    <h1>Ops! this page does not exists!...</h1>
+    <div class="mt-5">
+        <a href="{% url 'blog_home' %}">Go Back to the Blog!</a>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="mt-5">
+    <h1>Ops! You are not allowed here...</h1>
+    <div class="mt-5">
+        <a href="{% url 'home_page' %}">Go Back to the Home Page!</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
