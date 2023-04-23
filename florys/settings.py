@@ -15,10 +15,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "os.environ.get('SECRET_KEY')"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'florys.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse("os.environ.get('DATABASE_URL')")
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 # DATABASES = {
@@ -143,9 +143,9 @@ USE_TZ = True
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # aws settings
-AWS_STORAGE_BUCKET_NAME = "os.environ.get('BUCKET_NAME')"
-AWS_ACCESS_KEY_ID = "os.environ.get('AWS_ACCESS_KEY')"
-AWS_SECRET_ACCESS_KEY = "os.environ.get('AWS_SECRET_KEY')"
+AWS_STORAGE_BUCKET_NAME = os.environ.get('BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY')
 AWS_DEFAULT_ACL = "public-read"
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
