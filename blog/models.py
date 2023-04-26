@@ -61,7 +61,7 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
 
     def number_of_likes(self):
-        return self.likes.count()
+        return self.likes.count() 
 
     def get_absolute_url(self):
         return reverse('blog_home')

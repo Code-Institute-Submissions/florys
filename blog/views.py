@@ -90,8 +90,14 @@ class PostDetailView(DetailView):
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
         likes = self.object
-        total_likes = likes.number_of_likes()
         context = super(PostDetailView, self).get_context_data(*args, **kwargs)
+        users = likes.likes.all()
+        context["liked"] = False
+        for u in users:
+            if u == self.request.user:
+                context["liked"] = True
+                break
+        total_likes = likes.number_of_likes()
         context["cat_menu"] = cat_menu
         context["total_likes"] = total_likes
         return context

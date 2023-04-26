@@ -9,7 +9,8 @@
                 {% if user.is_authenticated %}
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
-                <p class="card-text">Category: {{ post.category | safe }}</p>
+                <p class="card-text">Category: {{ post.category | safe }}
+                </p>
                 {% if user.id == post.author.id %}
                 <div class="py-2">
                     <a href="{% url 'blog_home' %}">Go Back</a> |
@@ -47,11 +48,12 @@
                                 {% csrf_token %}
                                 {% if liked %}
                                 <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-icon-style">
-                                    <i class="fa-regular fa-heart" style="color: #731212;"></i>
+                                    <i class="fa-solid fa-heart" style="color: #731212;"></i>
                                 </button>
                                 {% else %}
                                 <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-icon-style">
                                     <i class="fa-regular fa-heart" style="color: #d71d1d;"></i>
+
                                 </button>
                                 {% endif %}
                             </form>
