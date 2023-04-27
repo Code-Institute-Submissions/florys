@@ -88,6 +88,8 @@ the aspect-ratio is set and working properly and therefore is a false positive. 
 
 ![JS Validation Result](assets/test/js_validator_results.jpg)
 
+* Although it displays those messages, I can ensure that the functionalities are there and that the messages are working fine. 
+
 
 
 ## Manual Testing
@@ -123,6 +125,11 @@ The Test case for this project can be found [here](https://docs.google.com/sprea
 
 
 ## Bugs
+
+- As you can see from the screenshots, the functionalities to upload custom images for the blog and the profile were working before on this project. 
+this issue is due to some S3 bucket policy, but the placeholder images gets uploaded. 
+Whenever adding / editing a post or a profile, I would suggest to leave the image field blank. 
+I am also aware that this project does not require AWS, and it was my personal choice.
 
 - I initially implemented the login with google and github but, it was working fine at first, but as the application got bigger,
 it started to present some bugs do I removed both. 

@@ -326,6 +326,10 @@ to copy the URL
 * [Scrimba - Pyhton](https://scrimba.com/learn/python)
 
 
+## Special Thanks
+
+* Special thanks to my mentor Harry Dhillon for the feedback on the project.
+
 ### Acknowledgements
 This application was executed and completed as a portfolio 4 Project for the full stack diploma at [Code Institute](https://codeinstitute.net/).
 
