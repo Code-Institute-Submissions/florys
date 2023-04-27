@@ -22,8 +22,10 @@
                         <div class="image-flash">
                             <p class="author">Author: {{ post.author }}</p>
                             {% if user.is_authenticated %}
+                            {% if user.id == post.author.id %}
                             <a href="{% url 'update_post' post.pk %}">Edit</a>
                             <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                            {% endif %}
                             {% endif %}
                         </div>
                     </div>
