@@ -127,8 +127,8 @@ The Test case for this project can be found [here](https://docs.google.com/sprea
 ## Bugs
 
 - As you can see from the screenshots, the functionalities to upload custom images for the blog and the profile were working before on this project. 
-this issue is due to some S3 bucket policy, but the placeholder images gets uploaded. 
-Whenever adding / editing a post or a profile, I would suggest to leave the image field blank. 
+this issue is due to some S3 bucket policy, but the placeholder images get uploaded correctly if nothing is there, otherwise it retrieve an error. 
+Whenever adding / editing a post or a profile, I would suggest to leave the images field blank so the post gets created with the placeholder image and the same during the profile creation. 
 I am also aware that this project does not require AWS, and it was my personal choice.
 
 - I initially implemented the login with google and github but, it was working fine at first, but as the application got bigger,
