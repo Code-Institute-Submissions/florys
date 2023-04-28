@@ -158,4 +158,5 @@ This is a bug that I will be planning to address in the future.
 Overall the application works, and it is supposed to do what it says, which is blogging. 
 There are no major unfixed issues, the user is able to register, login and start blogging. 
 
-PS: all the images and posts have been created just to showcase the project, the users are personally made by myself and all the images are taken from pexels.com.
+All the images and posts have been created just to showcase the project, the users are personally made by myself and all the images are taken from pexels.com.
+Some articles are taken from official font such as [Wikipedia](https://www.wikipedia.org/), [Laravel](https://laravel.com/) and [Composer](https://getcomposer.org/)
