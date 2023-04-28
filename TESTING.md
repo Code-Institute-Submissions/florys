@@ -140,6 +140,11 @@ This is a bug that I will be planning to address in the future.
 - I had a couple of issues during the deployment phase, with the config and general settings in Heroku, but the app is running fine.
 
 
+## Resolved Issue
+
+- I was able to address the image uploading issue, now the user can upload a profile image as well as a picture for the post.
+
+
 ## Further Implementations
 
 - Resolving the previous mentioned bugs.
@@ -152,3 +157,5 @@ This is a bug that I will be planning to address in the future.
 
 Overall the application works, and it is supposed to do what it says, which is blogging. 
 There are no major unfixed issues, the user is able to register, login and start blogging. 
+
+PS: all the images and posts have been created just to showcase the project, the users are personally made by myself and all the images are taken from pexels.com.
